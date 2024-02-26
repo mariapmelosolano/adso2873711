@@ -1,11 +1,12 @@
 # adso2873711
+## TGO en Análisis y Desarrollo de Software
 
-##Tecnologo analisis y desarrollo de software
 
-![Hollow Knight](https://i.blogs.es/a4d075/naruto-por-que-naruto-tiene-marcas-en-la-cara-y-cual-es-su-origen-segun-masashi-kishimoto1/840_560.jpeg)
+![carro](https://img.freepik.com/fotos-premium/faros-coches-modernos-cierran_427248-557.jpg?w=360)
 
-| Temas | Descripción |
-| ----- | ----------- |
-| 01- HTML| Lenguaje de Etiquetas |
-| 02- CSS| Hoja de Estilos en cascada |
-| 03- Javascript| Lenguaje de programación |
+| temas | descripcion |
+| ------- | ------------- |
+| 01-Emmet| FLUJO DE TRABAJO|
+| 02- HTML|LENGUAJE DE ETIQUETAS|
+| 03- CSS |HOJA DE ESTILOS EN CASCADA|
+| 04- JavaScript |PROGRAMACIÓN EN JAVASCRIPT|
