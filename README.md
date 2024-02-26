@@ -2,7 +2,7 @@
 ## TGO en Análisis y Desarrollo de Software
 
 
-![carro](https://img.freepik.com/fotos-premium/faros-coches-modernos-cierran_427248-557.jpg?w=360)
+![Carro](https://i.blogs.es/a4d075/naruto-por-que-naruto-tiene-marcas-en-la-cara-y-cual-es-su-origen-segun-masashi-kishimoto1/840_560.jpeg)
 
 | temas | descripcion |
 | ------- | ------------- |
