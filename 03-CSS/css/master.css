@@ -42,26 +42,21 @@ nav.controls {
 main {
     align-items: center;
     display: flex;
-    flex-direction: flex;
     flex-direction: column;
     justify-content: center;
     gap: 2rem;
     min-height: 100vh;
 
-    Header {
-
-        h1,
-        h2 {
+    header {
+        h1, h2 {
             color: #0009;
             text-align: center;
             margin: 0;
         }
-
         h1 {
-            font-size: 4rem;
+            font-size: 3.4rem;
             font-weight: 400;
         }
-
         h2 {
             font-size: 1.4rem;
             font-weight: 300;
@@ -72,7 +67,7 @@ main {
         display: flex;
         flex-direction: column;
         padding: 0;
-        gap: 1rem;
+        gap: 0.4rem;
         
         a:is(:link, :visited) {
             background-color: #0009;
@@ -87,7 +82,7 @@ main {
             width: 280px;
 
             i {
-                background-color: #a4c1ff;
+                background-color: #6ff7fc;
                 border-radius: 20px;
                 color: #0009;
                 font-style: normal;
@@ -98,14 +93,40 @@ main {
                 height: 34px;
                 width: 34px;
             }
-            
         }
-        a:is(:hover)  {
+
+        a:is(:hover) {
             transform: translate(-10px);
-            background-color: cadetblue;
+            background-color: #000c;
         }
+
         a:is(:hover) i {
-            transform: scale(1.2) rotateX(360deg);
+            transform: scale(1.4);
+        }
+    }
+
+    section {
+        border-radius: 10px;
+        background-color: #fff9;
+        color: #0009;
+        padding: 10px;
+        width: 400px;
+        h3 {
+            border-bottom: 2px dotted #0004;
+            color: #0006;
+            font-size: 1.6rem;
+            margin: 0;
+            width: fit-content;
+        }
+        p {
+            font-size: 1.4rem;
+            margin: 10px 0;
+        }
+        xmp {
+            border-radius: 10px;
+            background-color: #0009;
+            color: #fff9;
+            padding: 0 10px 10px 10px;
         }
     }
 }
