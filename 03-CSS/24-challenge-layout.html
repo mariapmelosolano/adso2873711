@@ -10,6 +10,10 @@
 background-color: #17a053;
 
        }
+       html {
+        border: 5px solid white;
+    }
+          
 
 div.sprite {
     background: url(Narutoimagen/spriteweb\ \(1\).png)no-repeat;
@@ -28,7 +32,7 @@ div.sprite {
 
       a:is(:link, :visited){
         text-decoration: none;
-        background-color: #000000;
+        background-color: rgba(0, 0, 0, 0.473);
         border-bottom: solid 4px  white;
         color: white;
         font-size: 1rem;
@@ -40,26 +44,194 @@ div.sprite {
       }
     
      div a:is(:hover){
-        background-color: #0009;
+        background-color: rgba(0, 0, 0, 0.712);
         border-color: gold;
      }
      div.box {
-        border: 2px solid white;
+        border: 2px solid rgba(61, 55, 55, 0.548);
         height: 300px;
         margin: 50px auto;
         width: 600px;
         justify-content: center;
      }
+     
+     div.images{
+            display: flex;
+            flex-direction: row;
+            gap: 1.5rem;
+            margin: auto;
+            margin-top: 20px;
+            justify-content: center;
+            background-color: #0009;
+            padding: 1.5rem;
+            width: calc(230px * 3);
+            .imagn{
+                background: url(Narutoimagen/spriteweb\ \(1\).png);
+                background-position: -530px -13px;
+                width: 200px;
+                height: 195px;
+                border: 2px solid #fff;
+                div{
+                    color: rgba(10, 10, 10, 0.6);
+                    background-color: rgba(240, 222, 222, 0.438);
+                    display: flex;
+                    justify-content: center;
+                    padding: 1.2rem;
+                    font-size: 1.2rem;
+                    font-weight: 600;
+                    color: #000;
+                     
+                }
+                &:hover div {
+                    background-color: #c6ecc4;
+                }
+            }
+        }
+        
+       
+
+        main.caja-negra {
+        background-color: rgba(0, 0, 0, 0.473);
+        border: 0.5px solid rgba(12, 54, 7, 0.075);
+        width: 750px;
+        margin: 20px auto;
+        align-items: center;
+        justify-content: center;
+    }
+
+    div.medio{
+        background-color: #fff;
+        height: 200px;
+        width: 730px;
+        margin: 10px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    div.imagen1 {
+        background: url(Narutoimagen/spriteweb\ \(1\).png);
+        background-position: -280px -490px;
+        width: 200px;
+        height: 115px;   
+    }
+
+    div.imagen2 {
+        background: url(Narutoimagen/spriteweb\ \(1\).png);
+        background-position: 0px -190px;
+        height: 199px;
+        width: 260px;
+    }
+
+    p {
+       
+        height: 199px;
+        width: 500px;
+        line-height: 1.6rem;
+        margin: 5px auto;
+        display: flex;
+        align-items: center;
+        font-size: 1.0rem;
+    }
+
+
+ main.caja-ultima {
+        width: 750px;
+        margin: 30px auto;
+        background-color: #fff;
+        height: 240px;
+
+    }
+
+    div.imagen-ultima {
+        background: url(Narutoimagen/spriteweb\ \(1\).png);
+        background-position: -500px -421px;
+        margin: 0 auto;
+        height: 180px;
+        width: 290px;
+        }
+
+    nav.menus2 {
+        display: flex;
+        gap: 1.2rem;
+        justify-content: center;
+        width: 200px;
+        margin: 0.7px auto;
+    }
+
+    section {
+        color: #000;
+        gap: 1rem;
+        align-items: center;
+        padding: 0.8rem;
+        width: 200px;
+        font-size: 0.9rem;
+      
+    }
+
+    section:is(:hover) {
+        border-bottom: 4px solid rgb(17, 70, 1) 
+
+    }
+
+            
+        
     </style>
 </head>
-<body>
+<div>
     <div class="sprite"></div>
+
     <div class="menus">
-      <a href="menu1">Inicio</a>
-      <a href="menu1">Nosotros</a>
-      <a href="menu1">portafolio</a>
-      <a href="menu1">servicios</a>
-      <a href="menu1">Contacto</a></div>
+      <a href="menu1">INICIO</a>
+      <a href="menu1">NOSOTROS</a>
+      <a href="menu1">PORTAFOLIO</a>
+      <a href="menu1">SERVICIOS</a>
+      <a href="menu1">CONTACTO</a>
+    </div>
+
+      <div class="images">
+        <div class="imagn"><div>Sprite1</div></div>
+        <div class="imagn"><div>Sprite2</div></div>
+        <div class="imagn"><div>Sprite3</div></div>
+      </div>
+
+     
+      <main class="caja-negra">
+        <div class="medio">
+            <div class="imagen1"></div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam minima blanditis porro corporis incidunt dolorum quas, exercitationem quam voluptatibus máxime perspiciatis, hic iure quos cumque necessitatibus sit architecto facere aperiam fugit voluptates.  Cumque delectus error quod facilis odio suscipit culpa quis? Ullam autem maxime   nostrum reprehenderit mollitia</p>
+            <div class="imagen2"></div>
+        </div>
+        
+        <div class="medio">
+            <div class="imagen1"></div>
+           <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam minima blanditis porro corporis incidunt dolorum quas, exercitationem quam voluptatibus máxime perspiciatis, hic iure quos cumque necessitatibus sit architecto facere aperiam fugit voluptates.  Cumque delectus error quod facilis odio suscipit culpa quis? Ullam autem maxime   nostrum reprehenderit mollitia</p>
+            <div class="imagen2"></div>
+        </div>
+        
+        <div class="medio">
+            <div class="imagen1"></div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam minima blanditis porro corporis incidunt dolorum quas, exercitationem quam voluptatibus máxime perspiciatis, hic iure quos cumque necessitatibus sit architecto facere aperiam fugit voluptates.  Cumque delectus error quod facilis odio suscipit culpa quis? Ullam autem maxime   nostrum reprehenderit mollitia</p>
+            <div class="imagen2"></div>
+        </div>
+
+    </main>
+
+
+    <main class="caja-ultima">
+        <div class="imagen-ultima"></div>
+        <nav class="menus2">
+            <section href="Menu2">INICIO</section>
+            <section href="menu2">NOSOTROS</section>
+            <section href="menu2">PORTAFOLIO</section>
+            <section href="menu2">SERVICIOS</section>
+            <section href="menu2">CONTACTO</section>
+        </nav>
+    </main>
+
+
+          
 
 </body>
 </html>
