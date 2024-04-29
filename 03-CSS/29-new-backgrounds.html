@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>29-new-backgrounds</title>
+    <link rel="stylesheet" href="css/master.css">
+    <style>
+       div.multiples {
+        border-radius: 10px;
+        border: 4px solid #fffd;
+        background: url(Narutoimagen/bg3.png),
+                    url(Narutoimagen/bg2.png),
+                    url(Narutoimagen/bg1.png);
+        margin-inline: auto;
+        margin-block: 1rem;
+        height: 453px;
+        width: 320px;
+       }
+       section div {
+        border:2px solid #fff9;
+        height: 200px;
+        margin-inline: auto;
+        width: 380px;
+       }
+       div.gradient1 {
+        background:  linear-gradient(to left, red, blue);
+       }
+       div.gradient2 {
+        background: linear-gradient(45deg, #7cf756, #033109);
+       }
+       div.gradient3 {
+        background: linear-gradient(to bottom, #bb0 50%,
+                                               #00b 50%,
+                                               #00b 75%,
+                                               #b00 75%);
+       }
+       div.gradient4 {
+        background: linear-gradient(to right, #333 50%, #fff 0%);
+        background-size: 50px 100%;
+       }
+       div.gradient5 {
+        background: radial-gradient(circle, hwb(271 0% 0%), rgb(0, 0, 0));
+       }
+       div.gradient6 {
+        background: radial-gradient(circle, #fff 20%,
+                                            #333 20%,
+                                            #333 40%,
+                                            #fff 40%,
+                                            #fff 60%,
+                                            #333 60%,
+                                            #333 80%,
+                                            #fff 80%,
+                                            #fff 80%);
+
+
+        
+       }
+       section h4{
+        margin: 0;
+        text-align: center;
+        font-size: 8rem;
+       }
+       h4.text-clip1 {
+        background: linear-gradient(to right, red, blue);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        
+       }
+       h4.text-clip2 {
+        background: url(Narutoimagen/descarga.jpg);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        animation: anim 4s infinite;
+       }
+       
+    </style>
+</head>
+
+<body>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns "<svg xmlns= "<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg>"
+        </a>
+
+    </nav>
+<main>
+    <header>
+        <h1>New Backgrounds</h1>
+        <h2>Nuevas caracteristicas(multiple,desgradados,clip-text).</h2>
+    </header>
+<section>
+   <h3>bg Multiple</h3>
+   <div class="multiples"></div>
+   <h3>bg Gradient:</h3>
+   <h5>linear-gradient (to top, color1, color2)</h5>
+   <div class="gradient1"></div>
+   <h5>linear-gradient(degrees, color1, color2)</h5>
+   <div class="gradient2"></div>
+   <h5>Colombia flag</h5>
+   <div class="gradient3"></div>
+   <h5>vertical lines</h5>
+   <div class="gradient4"></div>
+   <h5>radial-gradient(shape,color1,color2)</h5>
+   <div class="gradient5"></div>
+   <h5>bulleye</h5>
+   <div class="gradient6"></div>
+   <h3>Bg clip</h3>
+   <h4 class="text-clip1">ADSO</h4>
+   <H4 class="text-clip2">ADSO</H4>
+   
+</section>
+    
+</main> 
+</body>
+</html>
