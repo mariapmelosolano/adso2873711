@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>39-challenge-responsive</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;800&display=swap');
+        *{
+            transition: all 0.2s ease-in;    
+        }
+        body {
+            background-color: #003675;
+            color: #fffd;
+            font-family: Poppins, sans-serif;
+            font-weight: 200;
+            }
+            main {
+                padding: 2rem;
+            }
+            main header figure.logo {
+                background: url(Narutoimagen/pepsi01.png) no-repeat center;
+                margin: 0 auto;
+                width: 919px;
+                height: 354px;
+
+            }
+            main p {
+                line-height: 2rem;
+                text-align: justify;
+            }
+            main h1 {
+                font-size: 4rem;
+                text-align: center;
+
+            }
+            main h1 span.small,
+            main h1 span.medium{
+                display: none;
+
+            }
+            /*--------------*/
+            /*MEDIA QUERIES*/
+            /*------------*/
+            @media (max-width:1024px ) {
+                main header figure.logo {
+                    background: url(Narutoimagen/pepsi02.png) no-repeat center;
+                    width: 348px;
+                    height: 370px;
+
+                }
+                main h1 span.small,
+                main h1 span.large {
+                    display: none;
+                }
+                main h1 span.medium {
+                    display: inline;
+                }
+                main h1 {
+                    font-size: 2.8rem;
+                }
+            }
+            @media (max-width:780px ) {
+                main header figure.logo {
+                    background: url(Narutoimagen/pepsi03.png) no-repeat center;
+                    width: 162px;
+                    height: 150px;
+
+                }
+                main h1 span.small,
+                main h1 span.large {
+                    display: none;
+                }
+                main h1 span.small {
+                    display: inline;
+                }
+                main h1 {
+                    font-size: 2rem;
+                }
+            }
+    </style>
+</head>
+
+<body>
+    
+
+    </nav>
+<main>
+    <header>
+        <figure class="logo"></figure>
+    </header>
+<section>
+   <h1>
+    Media Queries 
+    <span class="large">( > 1024px)</span>
+    <span class="medium">( > 1024px)</span>
+    <span class="small">( < 780 px)</span>
+   </h1>
+   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Officiis neque voluptas dolorum sit repellendus! Eius quibusdam illo veniam provident obcaecati recusandae fuga quas distinctio quia doloribus! Veniam, molestias. Pariatur asperiores commodi voluptas nisi quisquam qui veniam iusto laborum alias saepe. Sint praesentium ipsa labore officiis. Aut accusamus quam pariatur maiores dignissimos quibusdam corrupti possimus. Quaerat dignissimos vitae aliquid similique quasi provident ratione laborum! Quia nam, veniam atque explicabo ipsum reprehenderit consequatur provident labore quos. Ducimus, itaque a aspernatur, voluptatem accusamus quia tenetur doloribus similique dignissimos dolorem eos consectetur, culpa dolore. Magni consequuntur recusandae porro rem quasi vitae optio corporis quidem?</p>
+</section>
+    
+</main> 
+</body>
+</html>
