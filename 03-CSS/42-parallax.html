@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>challenge-responsive</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Freeman&display=swap');
+
+        body{
+            background: url(images/bg-universo.jpg);
+            font-family: "Freeman", sans-serif;
+        }
+        main {
+            width: auto;
+            background: url(images/bg-universo.jpg) ;
+            justify-content: center;
+        }
+        
+        header {
+            justify-content: center;
+            display: flex;
+        }
+        
+        figure.logo {
+            background: url(images/logo-Avengers.png);
+            width: 1200px;
+            height: 600px;
+        }
+        
+        nav.heroes {
+            display: flex;
+            justify-content: center;
+        }
+        
+        div.heroe {
+            width: 400px;
+            height:400px;
+            margin: 20px ;
+            border: 2px solid  white;
+            position: relative;
+        }
+
+        div.anim {
+            height: 90px;
+            background-color: #ffffff94;
+            width: 100%;
+            position: absolute;
+            bottom: 0;
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 800;
+        }
+
+        div.heroe.ironman {
+            background: url(images/iron-man.jpg);
+        }
+
+        div.heroe.captainamerica {
+            background: url(images/captain-america.jpg);
+        }
+        
+        div.heroe.hulk {
+            background: url(images/hulk.jpg);
+        }
+
+        div.heroe.thor {
+            background: url(images/thor.jpg);
+        }
+
+        nav.villanos {
+            align-items: center;
+            justify-content: center;
+            width: 70%;
+            margin: 40px  auto;
+        }
+
+        div.villano {
+            height: 400px;
+            width: 98%;
+            margin: 40px auto;
+            background-color: rgba(255, 255, 255, 0.818);
+            border: 2px white dotted;
+            display: flex;
+            
+        }
+
+        div.img {
+            width: 400px;
+            height: 400px;
+        }
+ 
+        div.img.one {
+            background: url(images/doctor-doom.jpg);
+        }
+
+        div.img.two {
+            background: url(images/galactus.jpg);
+        }
+
+        div.texto {
+            width: 1200px;
+            height: 400px;
+            padding: 35px;
+            text-align: justify;
+            font-size: 1.7rem;
+        }
+
+        @media (max-width: 780px) {
+            nav.heroes {
+            display: flex;
+            justify-content: center;
+        }
+        div.heroe {
+            width: 400px;
+            height:400px;
+            margin: 20px ;
+            border: 2px solid  white;
+            position: relative;
+        }
+        }
+
+    </style>
+</head>
+<body>
+    <main>
+    <header>
+        <figure class="logo"></figure>
+    </header>
+    <section>
+        <nav class="heroes">
+            <div class="heroe ironman">
+                <div class="anim"><p>Iron-Man</p></div>
+            </div>
+            <div class="heroe captainamerica">
+                <div class="anim"><p>Captain America</p></div>
+            </div>
+            <div class="heroe hulk">
+                <div class="anim"><p>Hulk</p></div>
+            </div>
+            <div class="heroe thor">
+                <div class="anim"><p>Thor Odinson</p></div>
+            </div>
+        </nav>
+        <nav class="villanos">
+            <div class="villano doctordoom">
+                <div class="img one"></div>
+                <div class="texto"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias obcaecati tenetur unde ut perspiciatis voluptate alias quasi quo recusandae dolorem, nisi quia possimus cupiditate nam natus expedita minus esse ducimus? Cupiditate omnis porro saepe in natus commodi corrupti? Obcaecati ipsum atque fugit non labore aliquid! Voluptatem recusandae, eligendi placeat modi incidunt quidem quasi minus. Praesentium porro cum tempore laudantium. Doloribus magnam autem error ab minus veniam labore asperiores vel animi architecto optio nulla deserunt, alias officia consectetur deleniti! A accusantium non impedit vel ratione quia esse atque, nam molestiae perferendis blanditiis, sapiente quod facere obcaecati laborum inventore saepe? Dicta, atque.</p></div>
+            </div>
+            <div class="villano galactus">
+                <div class="img two"></div>
+                <div class="texto"><p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestias obcaecati tenetur unde ut perspiciatis voluptate alias quasi quo recusandae dolorem, nisi quia possimus cupiditate nam natus expedita minus esse ducimus? Cupiditate omnis porro saepe in natus commodi corrupti? Obcaecati ipsum atque fugit non labore aliquid! Voluptatem recusandae, eligendi placeat modi incidunt quidem quasi minus. Praesentium porro cum tempore laudantium. Doloribus magnam autem error ab minus veniam labore asperiores vel animi architecto optio nulla deserunt, alias officia consectetur deleniti! A accusantium non impedit vel ratione quia esse atque, nam molestiae perferendis blanditiis, sapiente quod facere obcaecati laborum inventore saepe? Dicta, atque.</p></div>
+            </div>
+        </nav>
+    </section>
+    </main>
+</body>
+</html>
