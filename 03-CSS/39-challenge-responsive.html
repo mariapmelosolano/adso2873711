@@ -21,129 +21,74 @@
             height: 332px;
             width: 780px;
             margin: 0 auto;
-            border: 2px solid red;
-           
-        }
-      
-        /*CAJA*/
-        div.caja{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            font-size: 0;
+            
+
         }
 
         
+      
+        /*CAJA*/
+
+        div nav.Imagenes{
+        width: 850px;
+        margin: -20px auto;
+        align-items: center;
+        justify-content: center;
+        border: 2px solid red;
+        
+    }
+
+    /*IMAGENES*/
+  
         div.imagen-01{
             background: url(Narutoimagen/challenge/IMAGEN01.jpeg) no-repeat;
-            display: flex;
             background-size: cover;
-            width: calc(25% - 20px);
-            height: 250px;
-            margin-top: 20px;
-            border: 2px solid rgb(255, 0, 0);
-            align-items: flex-end;
+            width: 200px;
+            height: 180px;
+            margin-top: 10px;
             display: inline-block;
-            margin-right: 10px;
-        }
-        p.imagen-01{
-            cursor: pointer;
-            color: rgb(255, 234, 252);
-            font-size: 2rem;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            height: 40px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.47);
-        }
-        p.imagen-01:hover{
-            border-top: none;
-            height: 90px;
-            background-size: cover;
+            border: 2px solid #f200a9;
         }
 
 /*Imagen 2*/
 
         div.imagen-02{
             background: url(Narutoimagen/challenge/imagen5.jpeg);
-            display: flex;
             background-size: cover;
-            width: calc(25% - 20px);
-            height: 250px;
-            border: 2px solid red;
-            align-items: flex-end;
+            width: 200px;
+            height: 180px;
+            margin-top: 10px;
             display: inline-block;
-            margin-right: 10px;
+            border: 2px solid #f200a9;
+           
         }
-        p.imagen-02{
-            cursor: pointer;
-            color: rgb(255, 234, 252);
-            font-size: 2rem;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            height: 40px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.47);
-        }
-        p.imagen-02:hover{
-            border-top: none;
-            height: 90px;
-            background-size: cover;
-        }
-      
-        p.personaje2:hover{
-            border-top: none;
-            background: url(Images/desmond1.jpg) no-repeat center;
-            background-size: cover;
-            height: 90px;
-        }
+       
 /*Imagen 03*/
         div.imagen-03{
-            background: url(Narutoimagen/challenge/imagen5\ \(2\).jpeg);
-            display: flex;
+            background: url(Narutoimagen/challenge/imagen07.jpeg);
             background-size: cover;
-            width: calc(25% - 20px);
-            height: 250px;
-            border: 2px solid red;
-            align-items: flex-end;
+            width: 200px;
+            height: 180px;
+            margin-top: 10px;
             display: inline-block;
-            margin-right: 10px;
-        }
-        p.imagen-03{
-            cursor: pointer;
-            color: rgb(255, 234, 252);
-            font-size: 2rem;
-            display: flex;
-            justify-content: center;
-            margin: 0;
-            height: 40px;
-            width: 100%;
-            background-color: rgba(0, 0, 0, 0.47);
-        }
-        p.imagen-03:hover{
-            border-top: none;
-            height: 90px;
-            background-size: cover;
+            border: 2px solid #f200a9;
         }
 
 /*Imagen 04*/
 
         div.imagen-04{
-            background: url(Narutoimagen/challenge/imagen07.jpeg);
-            display: flex;
+            background: url(Narutoimagen/challenge/imagenlemon.jpeg);
             background-size: cover;
-            width: calc(25% - 20px);
-            height: 250px;
-            border: 2px solid red;
-            align-items: flex-end;
+            width: 200px;
+            height: 180px;
+            margin-top: 10px;
             display: inline-block;
-            margin-right: 0;
+            border: 2px solid #f200a9;
         }
-        p.imagen-04{
-            cursor: pointer;
+
+/*Texto*/
+nav p.texto {
+    cursor: pointer;
             color: rgb(255, 234, 252);
             font-size: 2rem;
             display: flex;
@@ -153,27 +98,139 @@
             width: 100%;
             background-color: rgba(0, 0, 0, 0.47);
         }
-        p.imagen-04:hover{
+
+        p.texto:hover {
             border-top: none;
             height: 90px;
             background-size: cover;
+
         }
+   
+/**/
+        @media (max-width: 1024px) {
+            div.rositafresita{
+                background: url(Narutoimagen/challenge/d2dfynl-ee16b159-f327-4174-a013-9fbb8a1df148.png) no-repeat center;
+                background-position: 120px -10px;
+                height: 332px;
+                width: 700px;
+                margin: 0 auto;
+
+            }
+        }
+        @media (max-width: 1024px) {
+            body {
+                background: url(Narutoimagen/challenge/ko.jpeg) no-repeat center;
+                background-color: #000;
+            }
+        }
+
+
+
+        @media (max-width:780px ) {
+                div.rositafresita {
+                background: url(Narutoimagen/challenge/lll.png) no-repeat center;
+                width: 300px;
+                height: 400px;
+
+                }
+            }
+
+        @media (max-width: 780px) {
+            body {
+                background: url(Narutoimagen/challenge/fondo02.jpeg);
+                background-color: #000;
+            }
+        }
+
+        /**/
+        @media (max-width: 1024px){
+           div nav.Imagenes{
+                flex-direction:column;
+                width: 800px;
+                height: 900px;
+                margin: -60px auto;
+                padding: 50px;
+                gap: 10px;
+                justify-content: center;
+            }
+            div.imagen-01{
+                width: 300px;
+                height: 250px;
+                margin-block: 0 auto;
+            }
+            div.imagen-02{
+                width: 300px;
+                height: 250px;
+                margin-inline: 0 auto;
+            }
+            div.imagen-03{
+                width: 300px;
+                height: 250px;
+                margin-block: 0 auto;
+            }
+            div.imagen-04{
+                width: 300px;
+                height: 250px;
+                margin-inline: 0 auto;
+            }
+        }
+        /**/
+        @media (max-width: 780px){
+            div nav.Imagenes{
+                flex-direction:column;
+                width: 600px;
+                height: 900px;
+                margin: -120px auto;
+                padding: 100px;
+                gap: 10px;
+                justify-content: center;
+            }
+        
+       
+        div.imagen-01{
+                width: 400px;
+                height: 250px;
+                margin-block: 0 auto;
+            }
+      
+            div.imagen-02{
+                width: 400px;
+                height: 250px;
+                margin-inline: 0 auto;
+                margin-bottom: 10px;
+            }
+       
+            div.imagen-03{
+                width: 400px;
+                height: 250px;
+                margin-block: 0 auto;
+            }
+       
+            div.imagen-04{
+                width: 400px;
+                height: 250px;
+                margin-inline: 0 auto;
+            }
+        }
+
+
+
 
 
         /*CAJA NUEVA*/
         main.caja-negra01 {
-        background-color: rgba(0, 0, 0, 0);
+        background-color: rgba(242, 110, 224, 0.279);
         width: 750px;
-        margin: 20px auto;
+        margin: 30px auto;
         align-items: center;
         justify-content: center;
-        border: 2px solid red;
+        
     }
 
     div.medio{
         background-color: #fff;
         height: 200px;
-        width: 730px;
+        width: 100%;
         margin: 10px auto;
         display: flex;
         justify-content: center;
@@ -182,7 +239,7 @@
     }
 
     div.imagen1 {
-        background: url(Narutoimagen/challenge/imagen07.jpeg);
+        background: url(Narutoimagen/challenge/imagen10.jpeg);
             display: flex;
             background-size: cover;
             width: 200px;
@@ -206,50 +263,79 @@
     }
     
     /**/
-    main.caja-negra02 {
-        background-color: rgba(0, 0, 0, 0);
-        width: 750px;
-        margin: 20px auto;
-        align-items: center;
-        justify-content: center;
-        border: 2px solid red;
-    }
 
-    div.medio0{
-        background-color: #fff;
-        height: 200px;
-        width: 730px;
-        margin: 10px auto;
-        display: flex;
-        justify-content: center;
-        align-items: center;
 
-    }
-
-    div.imagen2 {
-        background: url(Narutoimagen/challenge/imagen07.jpeg);
+    div.caja-02{
+        background: #fff;
             display: flex;
+            height: 250px;
+            width: 800px;
+            margin: 0 auto;
+            border: 2px solid red;
+            margin-top: 10px;
+        }
+        div.medio{
+            background: url(Narutoimagen/challenge/imagen10.jpeg) no-repeat;
             background-size: cover;
-            width: 200px;
-            height: 200px;
-            align-items: flex-end;
-            display: inline-block;
-            margin-right: 0;
-    }
+            justify-content: center;
+            width: 300px;
+            height: 240px;
+           
+        }
+        div.textoo{
+            gap: 10px;
+            width: 100%;
+            height: 250px;
+            margin-top: 200px;
+
+        }
+        div.textoo h2{
+            font-size: 2rem;
+            color: black;
+            width: 190px;
+            height: 40px;
+            margin-top: -180px;
+            margin-inline: 40px;
+        }
+        div.textoo p{
+            font-size: 1rem;
+            color: black;
+            margin: 0;
+            height: 100px;
+        }
 
 
-    p {
-       
-        height: 199px;
-        width: 500px;
-        line-height: 1.6rem;
-        margin: 5px auto;
-        display: flex;
-        align-items: center;
-        font-size: 0.9rem;
 
-    }
-    
+
+
+        /**/
+        @media (max-width: 780px){
+            div.caja-02{
+                margin: 20px auto;
+                width: 500px;
+                margin-block: 0 auto;
+            }
+            div.medio{
+                width: 200px;
+                height: 250px;
+                margin: 0 auto;
+            }
+            div.textoo{
+                width: 300px;
+                height: 250px;
+                margin: 0 auto;
+                
+            }
+            div.textoo h2{
+                margin: 0 auto;
+                font-size: 1.2rem;
+                color: red;
+            }
+            div.textoo p{
+                overflow: scroll;
+            }
+        }
+
         
         
  </style>
@@ -261,45 +347,43 @@
 
 
 </head>
-<div>
-    <div class="rositafresita"></div>
+
+<body>
+    <div class="caja">
+
+        <div class="rositafresita"></div>
+
+        <nav class="Imagenes">
+            <div class="imagen-01">
+                <p class="texto">Rosita Fresita</p>
+            </div>
+    
+            <div class="imagen-02">
+                <p class="texto">Cerecita</p>
+            </div>
+    
+            <div class="imagen-03">
+                <p class="texto">Naranjita</p>
+            </div>
+    
+            <div class="imagen-04">
+                <p class="texto">Dulce de limon</p>
+            </div>
+            </nav>
+    </div>
+    
     <br>
-    <div class="Caja">
-        <div class="imagen-01">
-            <p class="imagen-01">Rosita Fresita</p>
+    <div class="caja-02">
+        <div class="medio"></div>
+        <div class="textoo">
+        <h2>Morita</h2>
+            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores deserunt velit voluptatum beatae earum qui dicta quia. Labore, consequuntur cum. Incidunt molestias tempora ipsum sed placeat vero a et sunt!</p>
         </div>
+            
+    </div>
 
-        <div class="imagen-02">
-            <p class="imagen-02">Cerecita</p>
-        </div>
-
-        <div class="imagen-03">
-            <p class="imagen-03">Naranjita</p>
-        </div>
-
-        <div class="imagen-04">
-            <p class="imagen-04">Dulce de limon</p>
-        </div>
-
-
-  
-        <main class="caja-negra01">
-            <div class="medio">
-
-                <div class="imagen1"></div>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam minima blanditis porro corporis incidunt dolorum quas</p>
-            </div>
-        </main>
-
-        
-        <main class="caja-negra02">
-            <div class="medio0">
-
-                <div class="imagen2"></div>
-               <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam minima blanditis porro corporis incidunt dolorum quas</p>
-            </div>
-        </main>
 
     </div>
   
 </html>
+
