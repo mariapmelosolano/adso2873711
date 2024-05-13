@@ -34,7 +34,6 @@
         margin: -20px auto;
         align-items: center;
         justify-content: center;
-        border: 2px solid red;
         
     }
 
@@ -157,6 +156,7 @@ nav p.texto {
                 width: 300px;
                 height: 250px;
                 margin-block: 0 auto;
+                margin-left: 60px;
             }
             div.imagen-02{
                 width: 300px;
@@ -167,6 +167,7 @@ nav p.texto {
                 width: 300px;
                 height: 250px;
                 margin-block: 0 auto;
+                margin-left: 60px;
             }
             div.imagen-04{
                 width: 300px;
@@ -174,6 +175,10 @@ nav p.texto {
                 margin-inline: 0 auto;
             }
         }
+
+
+
+
         /**/
         @media (max-width: 780px){
             div nav.Imagenes{
@@ -191,6 +196,7 @@ nav p.texto {
                 width: 400px;
                 height: 250px;
                 margin-block: 0 auto;
+                margin-left: -1px;
             }
       
             div.imagen-02{
@@ -198,18 +204,21 @@ nav p.texto {
                 height: 250px;
                 margin-inline: 0 auto;
                 margin-bottom: 10px;
+                margin-left: -1px;
             }
        
             div.imagen-03{
                 width: 400px;
                 height: 250px;
                 margin-block: 0 auto;
+                margin-left: -1px;
             }
        
             div.imagen-04{
                 width: 400px;
                 height: 250px;
                 margin-inline: 0 auto;
+                margin-left: -1px;
             }
         }
 
@@ -271,8 +280,8 @@ nav p.texto {
             height: 250px;
             width: 800px;
             margin: 0 auto;
-            border: 2px solid red;
             margin-top: 10px;
+            border:2px solid #9900ff
         }
         div.medio{
             background: url(Narutoimagen/challenge/imagen10.jpeg) no-repeat;
@@ -291,17 +300,19 @@ nav p.texto {
         }
         div.textoo h2{
             font-size: 2rem;
-            color: black;
+            color: #9900ff;
             width: 190px;
             height: 40px;
-            margin-top: -180px;
+            margin-top: -190px;
             margin-inline: 40px;
+            margin-left: 30px;
         }
         div.textoo p{
             font-size: 1rem;
-            color: black;
+            color: rgb(0, 0, 0);
             margin: 0;
             height: 100px;
+            margin-top: 40px;
         }
 
 
@@ -309,31 +320,82 @@ nav p.texto {
 
 
         /**/
-        @media (max-width: 780px){
+        @media (max-width: 1024px){
             div.caja-02{
-                margin: 20px auto;
-                width: 500px;
-                margin-block: 0 auto;
-            }
+            display: flex;
+            height: 250px;
+            width: 700px;
+            border: 2px solid rgb(255, 0, 170);
+            margin-top: -350px;
+            margin-left: 80px;
+        }
+    
             div.medio{
                 width: 200px;
                 height: 250px;
                 margin: 0 auto;
             }
             div.textoo{
-                width: 300px;
+                width: 500px;
                 height: 250px;
                 margin: 0 auto;
                 
             }
             div.textoo h2{
                 margin: 0 auto;
-                font-size: 1.2rem;
-                color: red;
+                font-size: 1.7 rem;
+                color: rgb(82, 14, 254);
             }
             div.textoo p{
-                overflow: scroll;
+               width: 400px;
+               height: 170px;
+               overflow: auto;
+               margin-left: 80px;
+               margin-top: 10px;
+
             }
+        }
+        
+        @media (max-width: 780px){
+            div.caja-02{
+                display: block;
+                margin: 20px auto;
+                width: 450px;
+                margin-block: 0 auto;
+                margin-top: 180px;
+                height: 500px;
+                margin-left: 80px;
+            }
+            div.medio{
+                width: 100%;
+                height: 30%;
+                background-size: contain;
+                background-position: center top;
+                background-repeat: no-repeat;
+                margin-top: 50px;
+
+                
+            }
+            div.textoo{
+                width: 100%;
+                height: 60px;
+            }
+            div.textoo h2{
+                margin: 0 auto;
+                font-size: 1.7 rem;
+                color: rgb(82, 14, 254);
+                margin-top: 20px;
+                margin-left: 26px;
+            }
+            div.textoo p{
+               width: 400px;
+               height: 212px;
+               overflow: auto;
+               margin-left: 30px;
+               margin-top: 10px;
+
+            }
+            
         }
 
         
@@ -377,7 +439,8 @@ nav p.texto {
         <div class="medio"></div>
         <div class="textoo">
         <h2>Morita</h2>
-            <p >Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores deserunt velit voluptatum beatae earum qui dicta quia. Labore, consequuntur cum. Incidunt molestias tempora ipsum sed placeat vero a et sunt!</p>
+            <p >Morita Tiene ojos color cereza y labios violeta pálido. Su cabello azul oscuro, enderezado se lleva con un diadema coloreado a juego acentuado con lavanda y una sola esfera azul que se asemeja a una mora.
+            del codo llevadas a cabo con un botón azul y púrpura. Su falda enderezada es de color denim con un icono mora azul cielo iconos en la esquina inferior derecha, llevado con un cinturón de lavanda. Ella usa medias verdes y blancas y pisos azul oscuro que se asemejan a su diadema.</p>
         </div>
             
     </div>
