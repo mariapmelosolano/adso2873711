@@ -103,6 +103,33 @@ main {
             transform: scale(1.4);
         }
     }
+    
+    header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        h1, h2 {
+            color: #0009;
+            text-align: center;
+            margin: 0;
+        }
+        h1 {
+            font-size: 3.4rem;
+            font-weight: 400;
+        }
+        h2 {
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+        img {
+            object-fit: contain;
+            border-radius: 50%;
+            height: 160px;
+            width: 160px;
+            border: 10px solid #fff9;
+        }
+    }
+
 
     section {
         border-radius: 10px;
