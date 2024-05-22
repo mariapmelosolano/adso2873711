@@ -2,7 +2,7 @@ doctyle
 html(land="es")
     head 
         meta(charset="UTF-8")
-        title  for  
+        title  javascript 
         link(rel="stylesheet", href="../css/master.css")
     body 
         nav.controls 
@@ -10,15 +10,14 @@ html(land="es")
 
         main 
             header 
-                h1 for Loop
+                h1 javascript 
             section 
-                ul 
-                    -for{let i=1; i<=10; i++}
-                        li element #{i}
-                table(border=1)
-                    -for(let tr=1: tr<=5; tr++)
-                        tr 
-                            -for{let td=1; td<=5; td++}
-                                tr F#{tr} C#{td}
-                            
-                            
+                h2.msj 
+    script. 
+        let msj = document.querySelector('.msj')
+        let name= prompt('whats your name?')
+        if (name=='Maria'){
+            msj.textContent = 'welcome Maria: '+ name
+        }else{
+            msj.textContent = 'welcome: ' + name
+        }
