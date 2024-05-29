@@ -74,7 +74,7 @@ main {
         background-color: #0009;
         color: #9cb8b2;
         padding: 2px 12px;
-        font-size: 1rem;
+        font-size: 2rem;
         font-weight: 500;
     }
     img {
@@ -121,6 +121,10 @@ main {
         }
         a:is(:hover) i {
             transform: scale(1.2) rotateX(360deg);
+        }
+        a.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
         }
     }
 }
