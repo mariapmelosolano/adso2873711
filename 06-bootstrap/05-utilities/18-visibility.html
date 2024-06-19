@@ -4,9 +4,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>10-opacity</title>
+    <title>18-visibility</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
     <link rel="stylesheet" href="../css/master.css">
+    <style>
+        .visible {
+             
+            zoom: 9;
+        }
+    </style>
 </head>
 
 <body>
@@ -21,16 +27,13 @@
     </nav>
     <main>
         <header>
-            <h1>10-opacity</h1>
-            <h2>La propiedad de opacidad establece el nivel de opacidad de un elemento. El nivel de opacidad describe el nivel de transparencia, donde 1 no es nada transparente, 0,5 es 50 % visible y 0 es completamente transparente.</h2>
+            <h1>18-visibility</h1>
+            <h2>Controla la visibilidad de los elementos, sin modificar su visualización, con utilidades de visibilidad.</h2>
         </header>
         <section class="content">
             <h3 class="my-4">Example</h3>
-                <div class="opacity-100 bg-primary p-2">100%</div>
-                <div class="opacity-75 bg-primary p-2">75%</div>
-                <div class="opacity-50 bg-primary p-2">50%</div>
-                <div class="opacity-25 bg-primary p-2">25%</div>
-                <div class="opacity-25 bg-primary p-2">0%</div>
+            <div class="visible mx-auto w-50">😜</div>
+            <div class="invisible">😊</div>
            </section>
     </main>
     <script src="../js/bootstrap.min.js"></script>
