@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Maria Paula Melo</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-300 p-4 flex justify-center space-x-4">
+
+    <!-- Primera sección -->
+    <section id="section1" class="bg-white rounded-xl p-4 max-w-xs">
+        <div class="w-full h-64 bg-gray-400 rounded-lg mb-4 flex justify-center items-center">
+            <img src="imagen/significado-oculto-logo-juegos-olimpicos-2024-guino-revolucion-francesa_98.webp" alt="Paris 2024 Logo" class="max-h-full max-w-full">
+        </div>
+        <h2 class="text-xl font-bold mb-2 uppercase text-yellow-500 mt-4">Juegos Olimpicos 2024</h2>
+        <p class="text-xs mb-4 mt-4">The Games of the XXXIII Olympiad are an international multi-sport event that will take place between July 26 and August 11, 2024 in the city of Paris.</p>
+        <div class="text-center mt-4">
+            <button onclick="showSection('section2')" class="bg-black text-white py-2 px-4 rounded-full inline-block text-sm">ver</button>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    <!-- Segunda sección -->
+    <section id="section2" class="bg-white rounded-xl p-4 max-w-xs mx-auto hidden">
+        <div class="flex items-center mb-4">
+            <button onclick="showSection('section1')" class="mr-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <h2 class="text-xl font-bold text-yellow-500">RESUMEN</h2>
+        </div>
+        <div class="space-y-4">
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">1</div>
+                <div>
+                    <p class="font-semibold">Ceremonia de apertura</p>
+                </div>
+            </div>
+            <div class="w-full h-40 bg-gray-200 rounded-lg mb-4">
+                <img src="imagen/th.jfif" alt="imagen" class="w-full h-full object-cover rounded-lg">
+            </div>
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">2</div>
+                <div>
+                    <p class="font-semibold">Noticias</p>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">3</div>
+                <div>
+                    <p class="font-semibold">Calendario</p>
+                </div>
+            </div>
+            <div class="flex items-center">
+                <div class="w-8 h-8 rounded-full bg-gray-200 flex items-center justify-center mr-2">4</div>
+                <div>
+                    <p class="font-semibold">Videos</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <button onclick="showSection('section3')" class="bg-black text-white py-2 px-4 rounded-full inline-block">Next</button>
+        </div>
+    </section>
+
+
+
+
+
+
+
+    <!-- Tercera sección -->
+    <section id="section3" class="bg-white rounded-xl p-7 max-w-xs hidden">
+        <div class="flex items-center mb-4">
+            <button onclick="showSection('section2')" class="mr-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            </button>
+            <h2 class="text-xl font-bold text-yellow-500">MEDALLERO</h2>
+        </div>
+        <div class="bg-black text-white p-4 rounded-lg mb-4 h-56">
+            <div class="flex justify-between mb-2">
+                <span>1. Estados Unidos</span>
+                <span>88</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span>2. China</span>
+                <span>61</span>
+            </div>
+            <div class="flex justify-between mb-2">
+                <span>3. Australia</span>
+                <span>39</span>
+            </div>
+            <div class="flex justify-between">
+                <span>4. France</span>
+                <span>48</span>
+            </div>
+        </div>
+        <p class="text-sm text-gray-600 italic mb-4">Your source for event results and medalists</p>
+        <button class="bg-black text-white py-2 px-4 rounded-full w-full">Start test</button>
+    </section>
+
+    <script>
+        function showSection(sectionId) {
+            document.getElementById('section1').classList.add('hidden');
+            document.getElementById('section2').classList.add('hidden');
+            document.getElementById('section3').classList.add('hidden');
+            document.getElementById(sectionId).classList.remove('hidden');
+        }
+    </script>
+
+</body>
+</html>
+

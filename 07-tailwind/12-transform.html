@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StandUp Language Learning</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .section {
+            display: none;
+        }
+        #section1 {
+            display: block;
+        }
+        .section:target {
+            display: block;
+        }
+        .section:target ~ #section1 {
+            display: none;
+        }
+        #section2:target ~ #section1,
+        #section3:target ~ #section1 {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-blue-900 p-4">
+    <div class="max-w-4xl mx-auto">
+        <!-- Primera sección -->
+        <section id="section1" class="section bg-white rounded-xl p-4">
+            <div class="w-full h-48 bg-gray-200 rounded-lg mb-4"></div>
+            <h2 class="text-3xl font-bold mb-2 text-center">StandUp</h2>
+            <p class="text-center text-sm mb-4">Are you ready to learn languages easily in the funniest way?</p>
+            <div class="text-center">
+                <a href="#section2" class="bg-black text-white py-2 px-4 rounded-full inline-block">Get started</a>
+            </div>
+        </section>
+
+        <!-- Segunda sección -->
+        <section id="section2" class="section bg-white rounded-xl p-4">
+            <div class="flex items-center mb-4">
+                <a href="#section1" class="mr-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </a>
+                <h2 class="text-xl font-bold">A2 - Elementary</h2>
+            </div>
+            <div class="space-y-4">
+                <div class="flex items-center">
+                    <div class="w-8 h-8 rounded-full bg-blue-100 flex items-center justify-center mr-2">0%</div>
+                    <div>
+                        <p class="font-semibold">Lesson 1</p>
+                        <p class="text-sm text-gray-500">How are you?</p>
+                    </div>
+                </div>
+                <!-- Repite para otras lecciones -->
+            </div>
+            <div class="text-center mt-4">
+                <a href="#section3" class="bg-black text-white py-2 px-4 rounded-full inline-block">Next</a>
+            </div>
+        </section>
+
+        <section id="section3" class="section bg-white rounded-xl p-4">
+            <div class="flex items-center mb-4">
+                <a href="#section2" class="mr-2">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+                </a>
+                <h2 class="text-xl font-bold">Choose your language level</h2>
+            </div>
+            <div class="space-y-2 mb-4">
+                <button class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full text-left">A1 - Basic</button>
+                <button class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full text-left">A2 - Elementary</button>
+                <button class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full text-left">B1 - Pre-Intermediate</button>
+                <button class="bg-blue-900 text-white py-2 px-4 rounded-lg w-full text-left">B2 - Intermediate</button>
+            </div>
+            <p class="text-sm mb-2">Or take a test to determine the level. It will take about 10 minutes.</p>
+            <button class="bg-gray-800 text-white py-2 px-4 rounded-full w-full">Start test</button>
+        </section>
+    </div>
+</body>
+</html>
