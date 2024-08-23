@@ -7,7 +7,20 @@
     <link rel="stylesheet" href="css/master.css">
     <style>
         main section h3{
-            margin-bottom: 1rem;
+            margin-inline: auto;
+        }
+        main section h4{
+            text-align: center;
+            font-size: 4rem;
+            margin: 0;
+        }
+        main section figure {
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0;
+
         }
     </style>
 </head>
@@ -24,12 +37,46 @@
         <h2>Description</h2>
     </header>
     <section>
-
+<h3 class="pkName"></h3>
+<h4 class="pkHP"></h4>
+<figure>
+    <img src="images/png-transparent-snorlax-pokemon-go-peluche-removebg-preview.png" class="pkImage">
+</figure>
+<ol class="pkMoves"></ol>
 </section>
 
 </main> 
     <script>
-     
+     const pkName = document.querySelector('.pkName')
+     const pkImage = document.querySelector('.pkImage')
+     const pkMoves = document.querySelector('.pkMoves')
+
+     const  pokemon = {
+        //attributes
+        name: 'Snorlax',
+        type:'Normal',
+        hp: 100,
+        image: 'URL',
+        attack: () => {
+if(this.hp <= 0){
+    return this.name + 'is Dead'
+
+}else {
+    this.hp -=10
+}
+
+        },
+
+        feed: () => {
+this.hp += 10
+        }
+
+     }
+
+     //render
+     pkName.innerHTML=`${pokemon.name} <small>(${pokemon.type})</small>`
+     pkHp.textContent = pokemon.hp
+     pkImage.src = pokemon.image
     </script>
 </body>
 </html>
