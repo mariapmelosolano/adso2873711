@@ -64,15 +64,17 @@
         section div.landscape {
             background-color: #fff9;
             border: 3px solid #714eaa;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 5px;
             height: 260px;
             margin: 0 auto;
-            width: 380px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            width: 374px;
         }
         section div.landscape button {
             border: none;
+            cursor: pointer;
             height: 44px;
             width: 44px;
         }
@@ -82,9 +84,11 @@
         section div.landscape button.btn-next {
             background: url(images/verhicule/flecha-correcta\ 3\ \(1\).svg) no-repeat;
         }
-        section div.methods button {
-            background: url(images/verhicule/metodosss.svg.svg);
-            width: 380px;
+
+        
+        section div.methods {
+            background: url(images/verhicule/metodosss.svg.svg) no-repeat;
+            width: 390px;
             height: 110px;
             display: flex;
             justify-content: center;
@@ -96,24 +100,25 @@
             border: none;
             cursor: pointer;
             margin-top: 2.3rem;
-            height: 50px;
-            width: 60px;
+            height: 63px;
+            width: 65px;
         }
-section div.methods button.btn-on {
-background: url(images/verhicule/metodos.svg.svg)no-repeat;
-}
-section div.methods button.btn-fwd {
-background: url(images/verhicule/metodos1.svg.svg)no-repeat;
-}
-section div.methods button.btn-stop {
-background: url(images/verhicule/metodos2.svg.svg)no-repeat;
-}
-section div.methods button.btn-bwd {
-background: url(images/verhicule/metodos4.svg.svg)no-repeat;
-}
-section div.methods button.btn-off {
-background: url(images/verhicule/metodos5.svg.svg)no-repeat;
-}
+        section div.methods button.btn-on {
+            background: url(images/verhicule/metodos.svg.svg) no-repeat;
+        }
+        section div.methods button.btn-fwd {
+            background: url(images/verhicule/metodos1.svg.svg) no-repeat;
+        }
+        section div.methods button.btn-stop {
+            background: url(images/verhicule/metodos2.svg.svg) no-repeat;
+        }
+        section div.methods button.btn-bwd {
+            background: url(images/verhicule/metodos4.svg.svg) no-repeat;
+        }
+        section div.methods button.btn-off {
+            background: url(images/verhicule/metodos5.svg.svg) no-repeat;
+        }
+        
     </style>
 
 </head>
@@ -140,10 +145,13 @@ background: url(images/verhicule/metodos5.svg.svg)no-repeat;
                 <span class="model">2025</span>
                 <span class="color">White</span>
             </div>
+           
             <div class="landscape">
                 <button class="btn-prev"></button>
                 <button class="btn-next"></button>
             </div>
+
+
             <div class="methods">
                 <button class="btn-on"></button>
                 <button class="btn-fwd"></button>
@@ -151,6 +159,7 @@ background: url(images/verhicule/metodos5.svg.svg)no-repeat;
                 <button class="btn-bwd"></button>
                 <button class="btn-off"></button>
             </div>
+           
 
         </section>
      
