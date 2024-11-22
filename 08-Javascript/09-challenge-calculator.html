@@ -1,199 +1,191 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Oper Arithmetics</title>
-    <link rel="stylesheet" href="css/master.css">
+    <title>Calculadora Mejorada</title>
     <style>
-        table.operators {
-            border-collapse: collapse;
-            font-size: 0.8rem;
-            margin: 40px auto;
-            width: 380px;
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
         }
-        table thead th {
-            background-color: rgba(144, 93, 178, 0.8);
-            color: #fffc;
+
+        .calculator {
+            width: 300px;
+            background: #441a9f;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 20px;
         }
-        table th,
-        table td {
-            background-color: #fffc;
-            border: 1px solid #333;
-            color: #333;
-            padding: 6px;
+
+        .display {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            background: #eeeeee;
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
         }
-        table thead input {
+
+        .operation, .result {
+            width: 100%;
+            background: none;
             border: none;
-            border-radius: 20px;
-            outline: none;
-            font-family: Poppins;
-            padding: 8px;
-            width: 120px;
+            font-size: 1.2rem;
+            font-family: inherit;
+            color: #333;
+            text-align: right;
         }
-        table tbody td:first-child {
-            font-size: 1rem;
-            text-align: center;
+
+        .result {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-top: 10px;
         }
-        table tbody tr:nth-child(even) td {
-            background-color: #fff8;
+
+        .buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        button {
+            flex: 1 1 calc(25% - 10px);
+            height: 60px;
+            font-size: 1.2rem;
+            background: #981fae;
+            border: none;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #ca2cc867;
+            transform: translateY(-3px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
+        button.btn-equal {
+            background: #4caf50;
+            color: white;
+        }
+
+        button.btn-equal:hover {
+            background: #45a049;
+        }
+
+        .dark {
+            background: #333;
+            color: #fff;
+        }
+
+        .dark .display {
+            background: #555;
+        }
+
+        .dark button {
+            background: #777;
+            color: #fff;
+        }
+
+        .dark button.btn-equal {
+            background: #6abf69;
         }
     </style>
-
 </head>
-
 <body>
-    <nav class="controls">
-        <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path fill="#ffffff"
-                    d="M346.7 6C337.6 17 320 42.3 320 72c0 40 15.3 55.3 40 80s40 40 80 40c29.7 0 55-17.6 66-26.7c4-3.3 6-8.2 6-13.3s-2-10-6-13.2c-11.4-9.1-38.3-26.8-74-26.8c-32 0-40 8-40 8s8-8 8-40c0-35.7-17.7-62.6-26.8-74C370 2 365.1 0 360 0s-10 2-13.3 6zM244.6 136c-40 0-77.1 18.1-101.7 48.2l60.5 60.5c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-55.3-55.3 0 .1L2.2 477.9C-2 487-.1 497.8 7 505s17.9 9 27.1 4.8l134.7-62.4-52.1-52.1c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L199.7 433l100.2-46.4c46.4-21.5 76.2-68 76.2-119.2C376 194.8 317.2 136 244.6 136z" />
-            </svg>
-        </a>
-    </nav>
-    <main>
-        <header>
-            <h1>Oper Arithmetics</h1>
-            <h2>Are symbols for basic mathematical calculations</h2>
-        </header>
-        <section>
-                <table class="operators">
-                    <thead>
-                        <tr>
-                            <th colspan="5">
-                                <input type="number" placeholder="Y Value">
-                            </th>
-                        </tr>
-                        <tr>
-                            <th>Operator</th>
-                            <th>Description</th>
-                            <th>Example</th>
-                            <th>Y</th>
-                            <th>X</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>+</td>
-                            <td>Addition</td>
-                            <td>x=y+2</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>-</td>
-                            <td>Substraction</td>
-                            <td>x=y-2</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>*</td>
-                            <td>Product</td>
-                            <td>x=y*2</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>/</td>
-                            <td>Division</td>
-                            <td>x=y/2</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>%</td>
-                            <td>Modulus</td>
-                            <td>x=y%2</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>++</td>
-                            <td>Increment(pre)</td>
-                            <td>x=++y</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>++</td>
-                            <td>Increment(post)</td>
-                            <td>x=y++</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>Decrement(pre)</td>
-                            <td>x=--y</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                        <tr>
-                            <td>--</td>
-                            <td>Decrement(post)</td>
-                            <td>x=y--</td>
-                            <td class="ry"></td>
-                            <td class="rx"></td>
-                        </tr>
-                    </tbody>
-                </table>
-         
-        </section>
-    </main>
+    <div class="calculator">
+        <div class="display">
+            <input type="text" class="operation" readonly>
+            <div class="result"></div>
+        </div>
+        <div class="buttons">
+            <button class="btn-clear">C</button>
+            <button class="btn-back">&lt;</button>
+            <button class="btn-pow" data-opt="**">^</button>
+            <button class="btn-mod" data-opt="%">%</button>
+            <button class="btn-7" data-num="7">7</button>
+            <button class="btn-8" data-num="8">8</button>
+            <button class="btn-9" data-num="9">9</button>
+            <button class="btn-div" data-opt="/">/</button>
+            <button class="btn-4" data-num="4">4</button>
+            <button class="btn-5" data-num="5">5</button>
+            <button class="btn-6" data-num="6">6</button>
+            <button class="btn-prod" data-opt="*">x</button>
+            <button class="btn-1" data-num="1">1</button>
+            <button class="btn-2" data-num="2">2</button>
+            <button class="btn-3" data-num="3">3</button>
+            <button class="btn-subs" data-opt="-">-</button>
+            <button class="btn-0" data-num="0">0</button>
+            <button class="btn-dot" data-opt=".">.</button>
+            <button class="btn-equal">=</button>
+            <button class="btn-add" data-opt="+">+</button>
+        </div>
+    </div>
+
     <script>
-        // results
-        const ry    = document.querySelectorAll('td.ry')
-        const rx    = document.querySelectorAll('td.rx')
-        const input = document.querySelector('input')
-        // Events
-        input.oninput = () => {
-            if (input.value != '') {
-                if (input.value.length < 4) {
-                    // Adition +
-                    ry[0].innerText = parseInt(input.value)
-                    rx[0].innerText = parseInt(input.value) + 2
-                    // Substraction -
-                    ry[1].innerText = parseInt(input.value)
-                    rx[1].innerText = parseInt(input.value) - 2
-                    // Product *
-                    ry[2].innerText = parseInt(input.value)
-                    rx[2].innerText = parseInt(input.value) * 2
-                    // Division /
-                    ry[3].innerText = parseInt(input.value)
-                    rx[3].innerText = parseInt(input.value) / 2
-                    // Modulus %
-                    ry[4].innerText = parseInt(input.value)
-                    rx[4].innerText = parseInt(input.value) % 2
-                    // Increment(pre) ++
-                    let y = parseInt(input.value)
-                    ry[5].innerText = ++y
-                    rx[5].innerText = y
-                    // Increment(post) ++
-                    y = parseInt(input.value)
-                    ry[6].innerText = y++
-                    rx[6].innerText = y
-                    // Decrement(pre) --
-                    y = parseInt(input.value)
-                    ry[7].innerText = --y
-                    rx[7].innerText = y
-                    // Decrement(post) --
-                    y = parseInt(input.value)
-                    ry[8].innerText = y--
-                    rx[8].innerText = y
-                } else {
-                    input.value = input.value.slice(0,-1)
-                }
-            } else {
-                for (let i = 0; i < ry.length; i++) {
-                    ry[i].innerText = ''
-                    rx[i].innerText = ''
-                }
+        const calculator = document.querySelector('.calculator');
+        const btnsNumbers = document.querySelectorAll("button[data-num]");
+        const btnsOpers = document.querySelectorAll("button[data-opt]");
+        const btnClear = document.querySelector(".btn-clear");
+        const btnBack = document.querySelector(".btn-back");
+        const btnEqual = document.querySelector(".btn-equal");
+        const operation = document.querySelector(".operation");
+        const result = document.querySelector(".result");
+
+        let isOper = false;
+
+        function addToOperation(c) {
+            if (operation.value.length <= 30) {
+                operation.value += c;
             }
         }
+
+        btnsNumbers.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                addToOperation(btn.dataset.num);
+                isOper = true;
+            });
+        });
+
+        btnsOpers.forEach((btn) => {
+            btn.addEventListener("click", () => {
+                if (isOper) {
+                    addToOperation(btn.dataset.opt);
+                    isOper = false;
+                }
+            });
+        });
+
+        btnClear.addEventListener("click", () => {
+            operation.value = "";
+            result.textContent = "";
+        });
+
+        btnBack.addEventListener("click", () => {
+            operation.value = operation.value.slice(0, -1);
+            isOper = !isNaN(operation.value.slice(-1));
+        });
+
+        btnEqual.addEventListener("click", () => {
+            try {
+                result.textContent = "=" + eval(operation.value);
+            } catch (e) {
+                result.textContent = "Error";
+            }
+        });
     </script>
 </body>
-
 </html>

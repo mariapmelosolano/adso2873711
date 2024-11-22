@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Clima Dinámico</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            transition: background-color 0.5s ease;
+        }
+
+        section {
+            width: 350px;
+            height: 450px;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: background-color 0.5s ease, color 0.5s ease;
+        }
+
+        section.day {
+            background: linear-gradient(135deg, #ffeb99, #ffd54f);
+            color: #333;
+        }
+
+        section.night {
+            background: linear-gradient(135deg, #2d436a, #4a6fa5);
+            color: #fff;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .temp {
+            font-size: 3rem;
+            font-weight: bold;
+        }
+
+        .icon {
+            width: 100px;
+            height: 100px;
+        }
+
+        .info {
+            margin-top: 10px;
+            font-size: 1rem;
+        }
+
+        .extra {
+            margin-top: 15px;
+            font-size: 0.9rem;
+        }
+
+        .update {
+            margin-top: 15px;
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+    </style>
+</head>
+<body>
+    <section class="day">
+        <h1 class="city">Manizales</h1>
+        <h2 class="country">Colombia</h2>
+        <img src="" alt="Ícono del clima" class="icon">
+        <p class="temp">--°C</p>
+        <p class="info">Condición: --</p>
+        <p class="extra">
+            Humedad: --% <br>
+            Nubes: --%
+        </p>
+        <p class="update">Actualizado: --</p>
+    </section>
+
+    <script>
+        const apiKey = "9711613e634d413785c161102241511";
+        const cityName = "Manizales";
+        const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${cityName}&aqi=no`;
+
+        const section = document.querySelector("section");
+        const city = document.querySelector(".city");
+        const country = document.querySelector(".country");
+        const temp = document.querySelector(".temp");
+        const icon = document.querySelector(".icon");
+        const info = document.querySelector(".info");
+        const extra = document.querySelector(".extra");
+        const update = document.querySelector(".update");
+
+        const loadWeather = async () => {
+            try {
+                const response = await fetch(url);
+                const data = await response.json();
+
+                // Actualizar datos del clima
+                city.textContent = data.location.name;
+                country.textContent = data.location.country;
+                temp.textContent = `${data.current.temp_c}°C`;
+                icon.setAttribute("src", `https:${data.current.condition.icon}`);
+                info.textContent = `Condición: ${data.current.condition.text}`;
+                extra.innerHTML = `Humedad: ${data.current.humidity}% <br> Nubes: ${data.current.cloud}%`;
+                update.textContent = `Actualizado: ${data.location.localtime}`;
+
+                // Cambiar fondo y texto según el día o la noche
+                if (data.current.is_day === 1) {
+                    section.classList.remove("night");
+                    section.classList.add("day");
+                } else {
+                    section.classList.remove("day");
+                    section.classList.add("night");
+                }
+            } catch (error) {
+                console.error("Error al cargar datos:", error);
+            }
+        };
+
+        loadWeather();
+    </script>
+</body>
+</html>
