@@ -5,36 +5,282 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Methods mathe</title>
-    <link rel="stylesheet" href="css/master.css">
+   
     <style>
-     
-      
+        body {
+            background-image: url('https://fondosmil.co/fondo/87244.jpg');
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffa600;
+        }
+
+        .body-screen {
+            background-image: url('images/image\ 1.png');
+            background-size: cover;
+            background-position: center;
+            width: 90%;
+            max-width: 400px;
+            height: 600px;
+            border-radius: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 9px 9px rgba(8, 6, 31, 0.904);
+            text-align: center;
+            position: relative;
+        }
+
+        .body-screen h1 {
+            color: white;
+            font-size: 2.5em;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .next-button {
+            background-color: #0a02459c;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .next-button:hover {
+            background-color: #0a0029;
+        }
+
+        .screen {
+            display: none;
+        }
+
+        .screen.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .next-button1 {
+            background-color: #0d0643;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px 20px;
+            font-size: 1.2em;
+            border-radius: 10px;
+        }
+        .next-button1:hover {
+            background-color: #160cc984;
+        }
+
+        .next-button1 img {
+            width: 40px;
+            height: 40px;
+            margin: 0 10px;
+        }
+
+        .next-button2 {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            position: absolute;
+            top: -35px;
+            left: -5px;
+            font-size: 24px;
+            color: rgb(255, 255, 255);
+        }
+        .next-button2:hover {
+            background-color: #160cc984;
+        }
+
+        .coraline {
+            display: none;
+            position: relative;
+            width: 50px;
+            height: 50px;
+            
+            margin: 5px;
+        }
+
+        .coraline img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .coraline span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .contenedor-circulo {
+            position: relative;
+            margin-top: 10px;
+        }
+
+        .circulo {
+            display: none;
+            position: relative;
+            width: 200px;
+            height: 180px;
+            top: -150px;
+            left: -40px;
+        }
+
+        .circulo img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .circulo span {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .balls-container {
+    position: absolute;
+    top: 150px; /* Ajusta la altura de inicio de las bolas */
+    left: 50px; /* Ajusta la posición lateral */
+}
+
+.coraline {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+}
+
+/* Posiciones específicas de las bolas */
+#ball1 { top: 0px; left: -60px; }
+#ball2 { top: 40px; left: -5px; }
+#ball3 { top: 20px; left: 80px; }
+#ball4 { top: -10px; left: 150px; }
+#ball5 { top: -80px; left: 150px; }
     </style>
 
 </head>
 
 <body>
-    <nav class="controls">
-        <a href="index.html">
-            <svg xmlns="http://www.w3.org/2000/svg"
-                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
-                <path fill="#ffffff"
-                    d="M346.7 6C337.6 17 320 42.3 320 72c0 40 15.3 55.3 40 80s40 40 80 40c29.7 0 55-17.6 66-26.7c4-3.3 6-8.2 6-13.3s-2-10-6-13.2c-11.4-9.1-38.3-26.8-74-26.8c-32 0-40 8-40 8s8-8 8-40c0-35.7-17.7-62.6-26.8-74C370 2 365.1 0 360 0s-10 2-13.3 6zM244.6 136c-40 0-77.1 18.1-101.7 48.2l60.5 60.5c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-55.3-55.3 0 .1L2.2 477.9C-2 487-.1 497.8 7 505s17.9 9 27.1 4.8l134.7-62.4-52.1-52.1c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L199.7 433l100.2-46.4c46.4-21.5 76.2-68 76.2-119.2C376 194.8 317.2 136 244.6 136z" />
-            </svg>
-        </a>
-    </nav>
-    <main>
-        <header>
-            <h1>22-challenge-baloto</h1>
-            <h2>Simulate a lottery number generator</h2>
-        </header>
-        <section>
-          
-        </section>
-    </main>
+    <div class="body-screen">
+        <!-- Pantalla de inicio -->
+        <div id="home-screen" class="screen active">
+            <h1>BALOTO</h1>
+            <button class="next-button" onclick="showScreen('game-screen')">PLAY</button>
+        </div>
+
+        <!-- Pantalla del juego -->
+        <div id="game-screen" class="screen">
+            <button id="iniciar" class="next-button1" onclick="startGame()">
+                <img src="images/11.png" alt="Left Image">
+                EMPEZAR
+                <img src="images/22.png" alt="Right Image">
+            </button>
+
+            <div class="balls-container">
+                <div class="coraline" id="ball1"><img src="images/ojo1.png" alt="Ball"><span></span></div>
+                <div class="coraline" id="ball2"><img src="images/ojo1.png" alt="Ball"><span></span></div>
+                <div class="coraline" id="ball3"><img src="images/ojo1.png" alt="Ball"><span></span></div>
+                <div class="coraline" id="ball4"><img src="images/ojo1.png" alt="Ball"><span></span></div>
+                <div class="coraline" id="ball5"><img src="images/ojo1.png" alt="Ball"><span></span></div>
+                <div class="contenedor-circulo">
+                    <div class="circulo" id="goldenBall"><img src="images/luna.png" alt="Ball"><span></span></div>
+                </div>
+            </div>
+
+            <!-- Botón VOLVER (sin cambios) -->
+            <button class="next-button2" onclick="showScreen('home-screen')">Volver</button>
+        </div>
+    </div>
+   
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
+
     <script>
-       
+        function showScreen(screenId) {
+            document.querySelectorAll('.screen').forEach(screen => {
+                screen.classList.remove('active');
+            });
+            document.getElementById(screenId).classList.add('active');
+        }
+    
+        function startGame() {
+            let numbers = [];
+            while (numbers.length < 5) {
+                let randomNumber = Math.floor(Math.random() * 43) + 1;
+                if (!numbers.includes(randomNumber)) {
+                    numbers.push(randomNumber);
+                }
+            }
+            let goldenNumber = Math.floor(Math.random() * 10) + 1;
+            let balls = document.querySelectorAll(".coraline");
+    
+            balls.forEach((coraline, index) => {
+                setTimeout(() => {
+                    coraline.style.display = "block";
+                    coraline.querySelector("span").textContent = numbers[index];
+                }, index * 500);
+            });
+    
+            setTimeout(() => {
+                let goldenBall = document.getElementById("goldenBall");
+                goldenBall.querySelector("span").textContent = goldenNumber;
+                goldenBall.style.display = "block";
+    
+                // Llamar a la función de confeti después de que todas las bolas aparezcan
+                launchConfetti();
+            }, balls.length * 500);
+        }
+    
+        function launchConfetti() {
+            var duration = 3 * 1000; // Duración de 3 segundos
+            var end = Date.now() + duration;
+    
+            (function frame() {
+                confetti({
+                    particleCount: 5,
+                    angle: 60,
+                    spread: 55,
+                    origin: { x: 0 }
+                });
+                confetti({
+                    particleCount: 5,
+                    angle: 120,
+                    spread: 55,
+                    origin: { x: 1 }
+                });
+    
+                if (Date.now() < end) {
+                    requestAnimationFrame(frame);
+                }
+            })();
+        }
     </script>
+    
 </body>
 
 </html>
