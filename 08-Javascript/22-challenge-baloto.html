@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BALOTO</title>
-   
+    <title>Challenge Arrays - Pucca</title>
     <style>
         body {
-            background-image: url('https://fondosmil.co/fondo/87244.jpg');
+            background-image: url('images/spiderman.jpg'); 
             background-size: cover;
             background-position: center;
             margin: 0;
@@ -18,11 +16,10 @@
             justify-content: center;
             align-items: center;
             min-height: 100vh;
-            background-color: #ffa600;
         }
 
         .body-screen {
-            background-image: url('images/image\ 1.png');
+            background-image: url('images/fondopucca.png'); 
             background-size: cover;
             background-position: center;
             width: 90%;
@@ -33,20 +30,20 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            box-shadow: 0 9px 9px rgba(8, 6, 31, 0.904);
+            box-shadow: 0 9px 9px rgba(0, 0, 0, 0.5);
             text-align: center;
             position: relative;
         }
 
         .body-screen h1 {
-            color: white;
+            color: #e91e63;
             font-size: 2.5em;
             margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 
         .next-button {
-            background-color: #0a02459c;
+            background-color: #e91e63;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -55,12 +52,14 @@
             cursor: pointer;
             transition: background-color 0.3s ease;
         }
+
         .next-button:hover {
-            background-color: #0a0029;
+            background-color: #c2185b;
         }
 
         .screen {
             display: none;
+            width: 100%;
         }
 
         .screen.active {
@@ -70,155 +69,114 @@
             justify-content: center;
         }
 
-        .next-button1 {
-            background-color: #0d0643;
+        .puccas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+
+        .puccas img {
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            border-radius: 10px;
+            border: 2px solid #ffc107;
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .puccas img:hover, .puccas img.selected {
+            transform: scale(1.1);
+            border-color: #e91e63;
+        }
+
+        .options, .plus-minus {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .options button, .plus-minus button {
+            background-color: #2196f3;
             color: white;
             border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            margin: 0 5px;
             cursor: pointer;
+            font-size: 1rem;
             transition: background-color 0.3s ease;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
-            bottom: 20px;
+        }
+
+        .options button:hover, .plus-minus button:hover {
+            background-color: #1976d2;
+        }
+
+        .selected-list {
+            margin-top: 20px;
+            padding: 10px;
+            background: rgba(240, 240, 240, 0.8);
+            border-radius: 10px;
+            min-height: 60px;
             display: flex;
+            flex-wrap: wrap;
+            gap: 5px;
             align-items: center;
             justify-content: center;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-radius: 10px;
-        }
-        .next-button1:hover {
-            background-color: #160cc984;
+            border: 2px solid #ffc107;
         }
 
-        .next-button1 img {
+        .circle-button {
             width: 40px;
             height: 40px;
-            margin: 0 10px;
-        }
-
-        .next-button2 {
-            background-color: transparent;
+            border-radius: 50%;
             border: none;
+            color: white;
+            font-size: 1.2em;
             cursor: pointer;
-            position: absolute;
-            top: -35px;
-            left: -5px;
-            font-size: 24px;
-            color: rgb(255, 255, 255);
-        }
-        .next-button2:hover {
-            background-color: #160cc984;
-        }
-
-        .coraline {
-            display: none;
-            position: relative;
-            width: 50px;
-            height: 50px;
-            
             margin: 5px;
         }
-
-        .coraline img {
-            width: 100%;
-            height: 100%;
+        .green {
+            background-color: green;
+        }
+        .red {
+            background-color: red;
         }
 
-        .coraline span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.2em;
-            font-weight: bold;
+        h3 {
+            color: #333;
+            font-size: 1.5em;
+            margin: 10px 0;
         }
-
-        .contenedor-circulo {
-            position: relative;
-            margin-top: 10px;
-        }
-
-        .circulo {
-            display: none;
-            position: relative;
-            width: 200px;
-            height: 180px;
-            top: -150px;
-            left: -40px;
-        }
-
-        .circulo img {
-            width: 100%;
-            height: 100%;
-        }
-
-        .circulo span {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            color: white;
-            font-size: 1.2em;
-            font-weight: bold;
-        }
-
-        .balls-container {
-    position: absolute;
-    top: 150px; /* Ajusta la altura de inicio de las bolas */
-    left: 50px; /* Ajusta la posición lateral */
-}
-
-.coraline {
-    position: absolute;
-    width: 60px;
-    height: 60px;
-}
-
-/* Posiciones específicas de las bolas */
-#ball1 { top: 0px; left: -60px; }
-#ball2 { top: 40px; left: -5px; }
-#ball3 { top: 20px; left: 80px; }
-#ball4 { top: -10px; left: 150px; }
-#ball5 { top: -80px; left: 150px; }
     </style>
-
 </head>
-
 <body>
     <div class="body-screen">
-        <!-- Pantalla de inicio -->
         <div id="home-screen" class="screen active">
-            <h1>BALOTO</h1>
+            <h1>Challenge Arrays</h1>
             <button class="next-button" onclick="showScreen('game-screen')">PLAY</button>
         </div>
 
-        <!-- Pantalla del juego -->
         <div id="game-screen" class="screen">
-            <button id="iniciar" class="next-button1" onclick="startGame()">
-                <img src="images/11.png" alt="Left Image">
-                EMPEZAR
-                <img src="images/22.png" alt="Right Image">
-            </button>
-
-            <div class="balls-container">
-                <div class="coraline" id="ball1"><img src="images/ojo1.png" alt="Ball"><span></span></div>
-                <div class="coraline" id="ball2"><img src="images/ojo1.png" alt="Ball"><span></span></div>
-                <div class="coraline" id="ball3"><img src="images/ojo1.png" alt="Ball"><span></span></div>
-                <div class="coraline" id="ball4"><img src="images/ojo1.png" alt="Ball"><span></span></div>
-                <div class="coraline" id="ball5"><img src="images/ojo1.png" alt="Ball"><span></span></div>
-                <div class="contenedor-circulo">
-                    <div class="circulo" id="goldenBall"><img src="images/luna.png" alt="Ball"><span></span></div>
-                </div>
+            <h3>1. Select One Pucca</h3>
+            <div class="puccas"></div>
+            
+            <h3>2. Select Options</h3>
+            <div class="plus-minus">
+                <button class="circle-button green" onclick="setAction('add')">+</button>
+                <button class="circle-button red" onclick="setAction('remove')">-</button>
             </div>
 
-            <!-- Botón VOLVER (sin cambios) -->
-            <button class="next-button2" onclick="showScreen('home-screen')">Volver</button>
+            <div class="options">
+                <button onclick="performAction('first')">First</button>
+                <button onclick="performAction('add')">Add</button>
+            </div>
+
+            <h3>3. Result</h3>
+            <div class="selected-list"></div>
         </div>
     </div>
-   
-    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1"></script>
 
     <script>
         function showScreen(screenId) {
@@ -227,60 +185,71 @@
             });
             document.getElementById(screenId).classList.add('active');
         }
-    
-        function startGame() {
-            let numbers = [];
-            while (numbers.length < 5) {
-                let randomNumber = Math.floor(Math.random() * 43) + 1;
-                if (!numbers.includes(randomNumber)) {
-                    numbers.push(randomNumber);
+
+        const puccasContainer = document.querySelector('.puccas');
+        const selectedList = document.querySelector('.selected-list');
+        let selectedPucca = null;
+        let currentAction = null; // 'add' or 'remove'
+        let puccas = [
+            'images/pucca1.png', 'images/pucca2.png', 'images/pucca3.png', 
+            'images/pucca4.png', 'images/pucca5.png', 'images/pucca6.png',
+            'images/pucca7.png', 'images/pucca8.png'
+        ];
+
+        let selectedPuccas = [];
+
+        function renderPuccas() {
+            puccasContainer.innerHTML = '';
+            puccas.forEach((src, index) => {
+                let img = document.createElement('img');
+                img.src = src;
+                img.onclick = () => selectPucca(img);
+                puccasContainer.appendChild(img);
+            });
+        }
+
+        function selectPucca(img) {
+            if (selectedPucca) {
+                selectedPucca.classList.remove('selected');
+            }
+            selectedPucca = img;
+            selectedPucca.classList.add('selected');
+        }
+
+        function setAction(action) {
+            currentAction = action;
+        }
+
+        function performAction(position) {
+            if (!selectedPucca || !currentAction) return;
+
+            if (currentAction === 'add') {
+                if (position === 'first') {
+                    selectedPuccas.unshift(selectedPucca.src);
+                } else if (position === 'add') {
+                    selectedPuccas.push(selectedPucca.src);
+                }
+            } else if (currentAction === 'remove') {
+                if (position === 'first') {
+                    selectedPuccas.shift();
+                } else if (position === 'add') {
+                    selectedPuccas.pop();
                 }
             }
-            let goldenNumber = Math.floor(Math.random() * 10) + 1;
-            let balls = document.querySelectorAll(".coraline");
-    
-            balls.forEach((coraline, index) => {
-                setTimeout(() => {
-                    coraline.style.display = "block";
-                    coraline.querySelector("span").textContent = numbers[index];
-                }, index * 500);
-            });
-    
-            setTimeout(() => {
-                let goldenBall = document.getElementById("goldenBall");
-                goldenBall.querySelector("span").textContent = goldenNumber;
-                goldenBall.style.display = "block";
-    
-                // Llamar a la función de confeti después de que todas las bolas aparezcan
-                launchConfetti();
-            }, balls.length * 500);
-        }
-    
-        function launchConfetti() {
-            var duration = 3 * 1000; // Duración de 3 segundos
-            var end = Date.now() + duration;
-    
-            (function frame() {
-                confetti({
-                    particleCount: 5,
-                    angle: 60,
-                    spread: 55,
-                    origin: { x: 0 }
-                });
-                confetti({
-                    particleCount: 5,
-                    angle: 120,
-                    spread: 55,
-                    origin: { x: 1 }
-                });
-    
-                if (Date.now() < end) {
-                    requestAnimationFrame(frame);
-                }
-            })();
-        }
-    </script>
-    
-</body>
 
+            updateList();
+        }
+
+        function updateList() {
+            selectedList.innerHTML = '';
+            selectedPuccas.forEach(src => {
+                let img = document.createElement('img');
+                img.src = src;
+                selectedList.appendChild(img);
+            });
+        }
+
+        renderPuccas();
+    </script>
+</body>
 </html>

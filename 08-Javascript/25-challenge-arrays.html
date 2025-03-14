@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge Arrays - Pucca</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            background-image: url('images/pucca_background.jpg'); /* Reemplaza con tu imagen de fondo */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #333; /* Color de texto general */
+        }
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+        header h1 {
+            font-size: 2.5rem;
+            color: #e91e63; /* Color rosa de Pucca */
+            margin-bottom: 10px;
+        }
+        header h2 {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 30px;
+        }
+        section {
+            background: rgba(255, 255, 255, 0.8); /* Fondo blanco semi-transparente */
+            padding: 20px;
+            border-radius: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            border: 2px solid #e91e63; /* Borde rosa */
+        }
+        .puccas {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 15px;
+        }
+        .puccas img {
+            width: 80px;
+            height: 80px;
+            cursor: pointer;
+            border-radius: 15px;
+            border: 2px solid #ffc107; /* Borde amarillo */
+            transition: transform 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+        }
+        .puccas img:hover {
+            transform: scale(1.1);
+            border-color: #e91e63; /* Borde rosa al pasar el mouse */
+        }
+        .puccas img.selected {
+            border-color: #e91e63;
+            filter: none;
+        }
+        .puccas img:not(.selected) {
+            filter: grayscale(100%);
+        }
+        .options {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+        }
+        .options button {
+            background-color: #e91e63;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+        .options button:hover {
+            background-color: #c2185b;
+            transform: translateY(-3px);
+        }
+        .selected-list {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(240, 240, 240, 0.8);
+            border-radius: 15px;
+            min-height: 80px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            align-items: center;
+            justify-content: center;
+            border: 2px solid #ffc107; /* Borde amarillo */
+        }
+        .selected-list img {
+            width: 50px;
+            height: 50px;
+            border-radius: 10px;
+            border: 2px solid #ffc107;
+            transition: transform 0.3s ease;
+        }
+        .selected-list img:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <header>
+            <h1>Challenge Arrays</h1>
+            <h2>Selecciona y manipula las imágenes de Pucca</h2>
+        </header>
+        <section>
+            <h3>1. Selecciona una Pucca</h3>
+            <div class="puccas"></div>
+            
+            <h3>2. Selecciona una opción</h3>
+            <div class="options">
+                <button onclick="addToStart()">Agregar al inicio</button>
+                <button onclick="addToEnd()">Agregar al final</button>
+                <button onclick="removeFromStart()">Eliminar al inicio</button>
+                <button onclick="removeFromEnd()">Eliminar al final</button>
+            </div>
+            
+            <h3>3. Resultado</h3>
+            <div class="selected-list"></div>
+        </section>
+    </main>
+
+    <script>
+        const puccasContainer = document.querySelector('.puccas');
+        const selectedList = document.querySelector('.selected-list');
+        let selectedPucca = null;
+
+        let puccas = [
+            'images/pucca1.png', 'images/pucca2.png', 'images/pucca3.png', 
+            'images/pucca4.png', 'images/pucca5.png', 'images/pucca6.png',
+            'images/pucca7.png', 'images/pucca8.png'
+        ];
+
+        let selectedPuccas = [];
+
+        function renderPuccas() {
+            puccasContainer.innerHTML = '';
+            puccas.forEach((src, index) => {
+                let img = document.createElement('img');
+                img.src = src;
+                img.onclick = () => selectPucca(img);
+                puccasContainer.appendChild(img);
+            });
+        }
+        function selectPucca(img) {
+            if (selectedPucca) {
+                selectedPucca.classList.remove('selected');
+            }
+            selectedPucca = img;
+            selectedPucca.classList.add('selected');
+        }
+
+        // Métodos de arrays
+        function addToStart() {
+            if (selectedPucca) {
+                selectedPuccas.unshift(selectedPucca.src);
+                updateList();
+            }
+        }
+
+        function addToEnd() {
+            if (selectedPucca) {
+                selectedPuccas.push(selectedPucca.src);
+                updateList();
+            }
+        }
+
+        function removeFromStart() {
+            if (selectedPuccas.length > 0) {
+                selectedPuccas.shift();
+                updateList();
+            }
+        }
+
+        function removeFromEnd() {
+            if (selectedPuccas.length > 0) {
+                selectedPuccas.pop();
+                updateList();
+            }
+        }
+
+        function updateList() {
+            selectedList.innerHTML = '';
+            selectedPuccas.forEach(src => {
+                let img = document.createElement('img');
+                img.src = src;
+                selectedList.appendChild(img);
+            });
+        }
+
+        // Inicializar
+        renderPuccas();
+    </script>
+</body>
+</html>
