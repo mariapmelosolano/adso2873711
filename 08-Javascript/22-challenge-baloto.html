@@ -1,255 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Challenge Arrays - Pucca</title>
+    <title>Templance</title>
+    <link rel="stylesheet" href="css/master.css">
     <style>
         body {
-            background-image: url('images/spiderman.jpg'); 
-            background-size: cover;
-            background-position: center;
-            margin: 0;
-            padding: 0;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-
-        .body-screen {
-            background-image: url('images/fondopucca.png'); 
-            background-size: cover;
-            background-position: center;
-            width: 90%;
-            max-width: 400px;
-            height: 600px;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 9px 9px rgba(0, 0, 0, 0.5);
             text-align: center;
-            position: relative;
+            font-family: 'Courier New', Courier, monospace;
         }
 
-        .body-screen h1 {
-            color: #e91e63;
-            font-size: 2.5em;
-            margin-bottom: 20px;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        section {
+            background: url(imagen/baloto/section-bg.png) no-repeat;
+            justify-content: center;
+            align-items: center;
+            width: 340px;
+            height: 545px;
+            padding: 0;
         }
 
-        .next-button {
-            background-color: #e91e63;
+        .back {
+            background: url(imagen/baloto/snoopy-bg.jpg) no-repeat;
+            height: 500px;
+            width: 300px;
+            margin: 0 auto;
+        }
+
+        .title {
+            /* border: 2px solid red; */
+            padding-top: 30px;
+            font-size: 30px;
             color: white;
-            border: none;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
+            text-shadow: 2px 2px 5px rgb(0, 140, 255);
         }
 
-        .next-button:hover {
-            background-color: #c2185b;
-        }
-
-        .screen {
-            display: none;
-            width: 100%;
-        }
-
-        .screen.active {
+        .slot-machine {
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            margin-top: 80px;
+        }
+
+        .reel {
+            width: 80px;
+            height: 80px;
+            border: 2px solid black;
+            border-radius: 10px;
+            display: flex;
             align-items: center;
             justify-content: center;
-        }
-
-        .puccas {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            padding: 10px;
-            margin-top: 20px;
-        }
-
-        .puccas img {
-            width: 60px;
-            height: 60px;
-            cursor: pointer;
-            border-radius: 10px;
-            border: 2px solid #ffc107;
-            transition: transform 0.3s ease, border-color 0.3s ease;
-        }
-
-        .puccas img:hover, .puccas img.selected {
-            transform: scale(1.1);
-            border-color: #e91e63;
-        }
-
-        .options, .plus-minus {
-            display: flex;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .options button, .plus-minus button {
-            background-color: #2196f3;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            margin: 0 5px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-
-        .options button:hover, .plus-minus button:hover {
-            background-color: #1976d2;
-        }
-
-        .selected-list {
-            margin-top: 20px;
-            padding: 10px;
-            background: rgba(240, 240, 240, 0.8);
-            border-radius: 10px;
-            min-height: 60px;
-            display: flex;
-            flex-wrap: wrap;
-            gap: 5px;
-            align-items: center;
-            justify-content: center;
-            border: 2px solid #ffc107;
-        }
-
-        .circle-button {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border: none;
-            color: white;
-            font-size: 1.2em;
-            cursor: pointer;
             margin: 5px;
-        }
-        .green {
-            background-color: green;
-        }
-        .red {
-            background-color: red;
+            background: white;
+            overflow: hidden;
+            position: relative;
+            font-size: 80px;
         }
 
-        h3 {
-            color: #333;
-            font-size: 1.5em;
-            margin: 10px 0;
+        .reel img {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            animation: none;
+        }
+
+        .spinning {
+            animation: spin 0.1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% {
+                transform: translateY(0);
+            }
+
+            100% {
+                transform: translateY(100%);
+            }
+        }
+
+        .button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            cursor: pointer;
+            background-color: #df544a;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #f72718;
+            transform: scale(1.1);
+        }
+        p{
+            /* border: 2px solid red; */
+            color: aliceblue;
+            font-size: medium;
         }
     </style>
+
 </head>
+
 <body>
-    <div class="body-screen">
-        <div id="home-screen" class="screen active">
-            <h1>Challenge Arrays</h1>
-            <button class="next-button" onclick="showScreen('game-screen')">PLAY</button>
-        </div>
-
-        <div id="game-screen" class="screen">
-            <h3>1. Select One Pucca</h3>
-            <div class="puccas"></div>
-            
-            <h3>2. Select Options</h3>
-            <div class="plus-minus">
-                <button class="circle-button green" onclick="setAction('add')">+</button>
-                <button class="circle-button red" onclick="setAction('remove')">-</button>
+    <nav class="controls">
+        <a href="index.html">
+            <svg xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 512 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->
+                <path fill="#ffffff"
+                    d="M346.7 6C337.6 17 320 42.3 320 72c0 40 15.3 55.3 40 80s40 40 80 40c29.7 0 55-17.6 66-26.7c4-3.3 6-8.2 6-13.3s-2-10-6-13.2c-11.4-9.1-38.3-26.8-74-26.8c-32 0-40 8-40 8s8-8 8-40c0-35.7-17.7-62.6-26.8-74C370 2 365.1 0 360 0s-10 2-13.3 6zM244.6 136c-40 0-77.1 18.1-101.7 48.2l60.5 60.5c6.2 6.2 6.2 16.4 0 22.6s-16.4 6.2-22.6 0l-55.3-55.3 0 .1L2.2 477.9C-2 487-.1 497.8 7 505s17.9 9 27.1 4.8l134.7-62.4-52.1-52.1c-6.2-6.2-6.2-16.4 0-22.6s16.4-6.2 22.6 0L199.7 433l100.2-46.4c46.4-21.5 76.2-68 76.2-119.2C376 194.8 317.2 136 244.6 136z" />
+            </svg>
+        </a>
+    </nav>
+    <main>
+        <header>
+            <h1>Challenge Aleatoriedad</h1>
+            <h2></h2>
+        </header>
+        <section>
+            <div class="back">
+                <h1 class="title">Tragamonedas</h1>
+                <div class="slot-machine">
+                    <div class="reel" id="reel1"><img src="img/question.png" alt="?" id="img1"></div>
+                    <div class="reel" id="reel2"><img src="img/question.png" alt="?" id="img2"></div>
+                    <div class="reel" id="reel3"><img src="img/question.png" alt="?" id="img3"></div>
+                </div>
+                <button class="button" id="spinButton" onclick="spin()">Girar</button>
+                <p id="result"></p>
             </div>
 
-            <div class="options">
-                <button onclick="performAction('first')">First</button>
-                <button onclick="performAction('add')">Add</button>
-            </div>
-
-            <h3>3. Result</h3>
-            <div class="selected-list"></div>
-        </div>
-    </div>
-
+        </section>
+    </main>
     <script>
-        function showScreen(screenId) {
-            document.querySelectorAll('.screen').forEach(screen => {
-                screen.classList.remove('active');
-            });
-            document.getElementById(screenId).classList.add('active');
-        }
-
-        const puccasContainer = document.querySelector('.puccas');
-        const selectedList = document.querySelector('.selected-list');
-        let selectedPucca = null;
-        let currentAction = null; // 'add' or 'remove'
-        let puccas = [
-            'images/pucca1.png', 'images/pucca2.png', 'images/pucca3.png', 
-            'images/pucca4.png', 'images/pucca5.png', 'images/pucca6.png',
-            'images/pucca7.png', 'images/pucca8.png'
+        const symbols = [
+            { name: '1', src: 'imagen/baloto/1.png' },
+            { name: '2', src: 'imagen/baloto/2.png' },
+            { name: '3', src: 'imagen/baloto/3.png' },
+            { name: '4', src: 'imagen/baloto/4.png' },
+            { name: '5', src: 'imagen/baloto/5.png' },
+            { name: '6', src: 'imagen/baloto/6.png' },
+            { name: '7', src: 'imagen/baloto/7.png' }
         ];
 
-        let selectedPuccas = [];
+        const messages = {
+            '1': '¡Un paseo tranquilo!',
+            '2': '¡Mira estos musculos!',
+            '3': '¡una flor para otra flor! 🌹',
+            '4': '¡Derrochador de estilo!',
+            '5': '¡¿Un helao?!',
+            '6': '¡Me recuerda a alguien!',
+            '7': '¡Mua!💋'
+        };
 
-        function renderPuccas() {
-            puccasContainer.innerHTML = '';
-            puccas.forEach((src, index) => {
-                let img = document.createElement('img');
-                img.src = src;
-                img.onclick = () => selectPucca(img);
-                puccasContainer.appendChild(img);
-            });
-        }
+        function spin() {
+    document.getElementById("spinButton").disabled = true;
+    document.getElementById("result").textContent = "";
+    let result = [];
 
-        function selectPucca(img) {
-            if (selectedPucca) {
-                selectedPucca.classList.remove('selected');
-            }
-            selectedPucca = img;
-            selectedPucca.classList.add('selected');
-        }
+    for (let i = 1; i <= 3; i++) {
+        let img = document.getElementById(`img${i}`);
+        img.classList.add("spinning");
+        
+        let interval = setInterval(() => {
+            let randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+            img.src = randomSymbol.src;
+        }, 100);
 
-        function setAction(action) {
-            currentAction = action;
-        }
+        let stopTime = 1000 + i * 500;
 
-        function performAction(position) {
-            if (!selectedPucca || !currentAction) return;
+        setTimeout(() => {
+            clearInterval(interval);
+            img.classList.remove("spinning");
 
-            if (currentAction === 'add') {
-                if (position === 'first') {
-                    selectedPuccas.unshift(selectedPucca.src);
-                } else if (position === 'add') {
-                    selectedPuccas.push(selectedPucca.src);
-                }
-            } else if (currentAction === 'remove') {
-                if (position === 'first') {
-                    selectedPuccas.shift();
-                } else if (position === 'add') {
-                    selectedPuccas.pop();
-                }
+            let finalSymbol;
+            if (i === 3 && Math.random() < 0.9) {  
+                // 50% de probabilidades de hacer que el tercer símbolo coincida con el primero
+                finalSymbol = symbols.find(s => s.name === result[0]);
+            } else {
+                finalSymbol = symbols[Math.floor(Math.random() * symbols.length)];
             }
 
-            updateList();
-        }
+            img.src = finalSymbol.src;
+            result.push(finalSymbol.name);
 
-        function updateList() {
-            selectedList.innerHTML = '';
-            selectedPuccas.forEach(src => {
-                let img = document.createElement('img');
-                img.src = src;
-                selectedList.appendChild(img);
-            });
-        }
+            if (result.length === 3) checkWin(result);
+        }, stopTime);
+    }
+}
 
-        renderPuccas();
+
+        function checkWin(result) {
+            document.getElementById("spinButton").disabled = false;
+            if (result[0] === result[1] && result[1] === result[2]) {
+                document.getElementById("result").textContent = messages[result[0]];
+            } else {
+                document.getElementById("result").textContent = "Sigue intentando...";
+            }
+        }
     </script>
 </body>
+
 </html>
