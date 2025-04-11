@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barbie Esquiva Mariposas</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('images/image\ 5.png') no-repeat center center/cover;
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        /* Contenedores principales */
+        .container, .game-container, .game-play-container {
+            position: relative;
+            width: 90%;
+            max-width: 800px;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+        }
+        
+        /* Pantalla de inicio */
+        .small-image {
+            width: 100%;
+            max-width: 250px;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .button, .play-button {
+            display: inline-block;
+            background: #e6007e;
+            color: white;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 30px;
+            text-decoration: none;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        
+        .button:hover, .play-button:hover {
+            background: #ff0090;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+        }
+        
+        /* Pantalla de instrucciones */
+        .game-container {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            height: 500px;
+            background: url('images/777.png') no-repeat center center/cover;
+            border-radius: 15px;
+            border: 3px solid #e6007e;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 20px;
+        }
+        
+        .fairy {
+            width: 150px;
+            margin-bottom: 20px;
+        }
+        
+        .text-box {
+            background: rgba(255, 255, 255, 0.8);
+            color: #e6007e;
+            padding: 15px 25px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            font-size: 20px;
+            font-weight: bold;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e6007e;
+            max-width: 80%;
+        }
+        
+        /* Pantalla de juego */
+        .game-play-container {
+            display: none;
+            width: 90%;
+            max-width: 800px;
+            height: 600px;
+            background: url('images/777.png') no-repeat center center/cover;
+            border-radius: 15px;
+            border: 3px solid #e6007e;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .game-sky {
+            position: absolute;
+            top: 50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            height: 80%;
+            background: url('images/cielo-juego.png') no-repeat center center/cover;
+            border-radius: 15px;
+            border: 2px solid white;
+        }
+        
+        .game-title {
+            position: absolute;
+            top: 10px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            color: #e6007e;
+            font-size: 24px;
+            font-weight: bold;
+            text-shadow: 1px 1px 3px white;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 10px;
+            border-radius: 10px;
+            margin: 0 auto;
+            width: 80%;
+            z-index: 10;
+        }
+        
+        .barbie-logo {
+            position: absolute;
+            bottom: 10px;
+            right: 20px;
+            width: 120px;
+            z-index: 10;
+        }
+        
+        #player {
+            position: absolute;
+            width: 100px;
+            z-index: 5;
+            transition: transform 0.1s;
+        }
+        
+        .butterfly {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background: url('images/mariposa.png') no-repeat center center/contain;
+            z-index: 5;
+            animation: flutter 0.5s infinite alternate;
+        }
+        
+        @keyframes flutter {
+            0% { transform: rotate(-5deg); }
+            100% { transform: rotate(5deg); }
+        }
+        
+        .score-display {
+            position: absolute;
+            top: 70px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 8px 15px;
+            border-radius: 10px;
+            color: #e6007e;
+            font-weight: bold;
+            font-size: 18px;
+            z-index: 10;
+        }
+        
+        .game-over {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            z-index: 20;
+        }
+        
+        .game-over h2 {
+            color: #e6007e;
+            font-size: 36px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 3px white;
+        }
+        
+        .restart-btn {
+            background: #e6007e;
+            color: white;
+            padding: 12px 25px;
+            font-size: 18px;
+            border-radius: 30px;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Pantalla de inicio -->
+    <div class="container">
+        <img src="images/fotopequeña.png" alt="Juego" class="small-image">
+        <br>
+        <button class="button" onclick="mostrarJuego()">JUGAR AHORA</button>
+    </div>
+    
+    <!-- Pantalla de instrucciones -->
+    <div class="game-container">
+        <img src="images/barbie.png" alt="Barbie Hada" class="fairy">
+        <div class="text-box">Usa las flechas del teclado para mover a Barbie y esquivar las mariposas</div>
+        <button class="play-button" onclick="iniciarJuego()">PLAY</button>
+    </div>
+    
+    <!-- Pantalla del juego -->
+    <div class="game-play-container">
+        <div class="game-title">ESQUIVA TODAS LAS MARIPOSAS!!</div>
+        <div class="score-display">Puntaje: <span id="score">0</span></div>
+        
+        <div class="game-sky"></div>
+        
+        <!-- Elementos del juego -->
+        <img src="images/barbie.png" alt="Barbie jugable" id="player">
+        
+        <!-- Logo Barbie -->
+        <img src="images/logo_barbie.png" alt="Logo Barbie" class="barbie-logo">
+        
+        <!-- Pantalla de Game Over -->
+        <div class="game-over">
+            <h2>¡Juego Terminado!</h2>
+            <p style="color: white; font-size: 24px; margin-bottom: 20px;">Puntaje: <span id="final-score">0</span></p>
+            <button class="restart-btn" onclick="reiniciarJuego()">Jugar de nuevo</button>
+        </div>
+    </div>
+
+    <script>
+        // Variables del juego
+        let player;
+        let gameArea;
+        let skyArea;
+        let butterflies = [];
+        let score = 0;
+        let gameInterval;
+        let butterflyInterval;
+        let keysPressed = {};
+        let playerSpeed = 8;
+        let gameActive = false;
+        
+        // Cambio a pantalla de instrucciones
+        function mostrarJuego() {
+            document.querySelector('.container').style.display = 'none';
+            document.querySelector('.game-container').style.display = 'flex';
+        }
+        
+        // Iniciar el juego principal
+        function iniciarJuego() {
+            document.querySelector('.game-container').style.display = 'none';
+            gameArea = document.querySelector('.game-play-container');
+            skyArea = document.querySelector('.game-sky');
+            gameArea.style.display = 'block';
+            
+            // Posicionar al jugador
+            player = document.getElementById('player');
+            player.style.width = '100px';
+            player.style.bottom = '100px';
+            player.style.left = '50%';
+            player.style.transform = 'translateX(-50%)';
+            
+            // Reiniciar variables
+            score = 0;
+            document.getElementById('score').textContent = '0';
+            butterflies.forEach(b => b.element.remove());
+            butterflies = [];
+            gameActive = true;
+            
+            // Configurar controles del teclado
+            window.addEventListener('keydown', function(e) {
+                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                    keysPressed[e.key] = true;
+                }
+            });
+            
+            window.addEventListener('keyup', function(e) {
+                if (['ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                    keysPressed[e.key] = false;
+                }
+            });
+            
+            // Iniciar el bucle del juego
+            gameInterval = setInterval(updateGame, 20);
+            
+            // Generar mariposas cada segundo
+            butterflyInterval = setInterval(createButterfly, 1000);
+        }
+        
+        // Crear una nueva mariposa
+        function createButterfly() {
+            if (!gameActive) return;
+            
+            const butterfly = document.createElement('div');
+            butterfly.className = 'butterfly';
+            
+            // Posición aleatoria en la parte superior del área del cielo
+            const skyRect = skyArea.getBoundingClientRect();
+            const gameRect = gameArea.getBoundingClientRect();
+            
+            const xPos = Math.random() * (skyRect.width - 60) + (skyRect.left - gameRect.left);
+            butterfly.style.left = xPos + 'px';
+            butterfly.style.top = '-60px';
+            
+            gameArea.appendChild(butterfly);
+            butterflies.push({
+                element: butterfly,
+                x: xPos,
+                y: -60,
+                speed: 2 + Math.random() * 3 // Velocidad aleatoria
+            });
+        }
+        
+        // Actualizar el estado del juego
+        function updateGame() {
+            if (!gameActive) return;
+            
+            // Mover al jugador
+            const playerRect = player.getBoundingClientRect();
+            const skyRect = skyArea.getBoundingClientRect();
+            
+            if (keysPressed['ArrowLeft'] && playerRect.left > skyRect.left) {
+                player.style.left = (parseInt(player.style.left) || 0) - playerSpeed + 'px';
+            }
+            if (keysPressed['ArrowRight'] && playerRect.right < skyRect.right) {
+                player.style.left = (parseInt(player.style.left) || 0) + playerSpeed + 'px';
+            }
+            if (keysPressed['ArrowUp'] && playerRect.top > skyRect.top) {
+                player.style.bottom = (parseInt(player.style.bottom) || 0) + playerSpeed + 'px';
+            }
+            if (keysPressed['ArrowDown'] && playerRect.bottom < skyRect.bottom) {
+                player.style.bottom = (parseInt(player.style.bottom) || 0) - playerSpeed + 'px';
+            }
+            
+            // Mover mariposas y detectar colisiones
+            const playerX = parseInt(player.style.left) || 0;
+            const playerY = gameArea.offsetHeight - (parseInt(player.style.bottom) || 0) - player.offsetHeight;
+            const playerWidth = player.offsetWidth;
+            const playerHeight = player.offsetHeight;
+            
+            butterflies.forEach((butterfly, index) => {
+                butterfly.y += butterfly.speed;
+                butterfly.element.style.top = butterfly.y + 'px';
+                
+                // Detectar colisión
+                if (
+                    butterfly.y + 60 > playerY &&
+                    butterfly.y < playerY + playerHeight &&
+                    butterfly.x + 60 > playerX &&
+                    butterfly.x < playerX + playerWidth
+                ) {
+                    // Colisión detectada - fin del juego
+                    gameOver();
+                    return;
+                }
+                
+                // Eliminar mariposas que salieron de la pantalla
+                if (butterfly.y > skyArea.offsetHeight) {
+                    butterfly.element.remove();
+                    butterflies.splice(index, 1);
+                    score++;
+                    document.getElementById('score').textContent = score;
+                }
+            });
+        }
+        
+        // Fin del juego
+        function gameOver() {
+            gameActive = false;
+            clearInterval(gameInterval);
+            clearInterval(butterflyInterval);
+            
+            document.getElementById('final-score').textContent = score;
+            document.querySelector('.game-over').style.display = 'flex';
+        }
+        
+        // Reiniciar el juego
+        function reiniciarJuego() {
+            document.querySelector('.game-over').style.display = 'none';
+            iniciarJuego();
+        }
+    </script>
+</body>
+</html>
