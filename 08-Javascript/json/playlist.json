@@ -1,0 +1,33 @@
+{
+    "songs": [
+        { "id": 1,
+        "title": "Sour Candy",
+        "artist": "Blackpink",
+        "album": "The album ",
+        "year": 2020,
+        "cover": "images/mp3player/cover-01.webp",
+        "song": "audio/song-01.mp3"
+       
+    
+    },
+
+    { "id": 2,
+    "title": "APT",
+    "artist": "Rosé",
+    "album": "Rosie",
+    "year": 2024,
+     "cover": "images/mp3player/cover-02.webp",
+    "song": "audio/song-02.mp3"
+    },
+    { "id": 3,
+    "title": "Lovesick Girls",
+    "artist": "Blackpink",
+    "album": "Dookie",
+    "year": 2020,
+   "cover": "images/mp3player/cover-03.webp",
+    "song": "audio/song-03.mp3"
+
+}
+
+    ]
+}
