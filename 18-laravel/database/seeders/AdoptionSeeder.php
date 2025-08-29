@@ -19,7 +19,7 @@ class AdoptionSeeder extends Seeder
         $adopt->save();
 
         $pet = \App\Models\Pet::find($adopt->pet_id);
-        $pet-> status = 1;
+        $pet->status = 1;
         $pet->save();
     }
 }

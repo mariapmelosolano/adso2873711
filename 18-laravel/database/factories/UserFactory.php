@@ -1,5 +1,7 @@
 <?php
+
 namespace Database\Factories;
+
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
@@ -21,25 +23,27 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
-        $gender = fake()->randomElement(['Male', 'Female']);
-        $name = $gender === 'Male' ? fake()->firstNameMale() 
-                                   : fake()->firstNameFemale();
+        $gender = fake()->randomElement(array('Female', 'Male'));
+        $name = ($gender == 'Female') ? $name = fake()->firstNameFemale() 
+                                      : $name = fake()->firstNameMale();
         ($gender == 'Female') ? $g = 'girl' : $g = 'boy';
-        $id = fake()->numerify('75#####');
-
+        $id = fake()->numerify('75######');
+        //https://avatar.iran.liara.run/username?username=[firstname+lastname]
+        //https://randomuser.me/api/portraits/men/75.jpg
+        //https://api.dicebear.com/9.x/pixel-art/svg?seed=Ofac
         copy('https://avatar.iran.liara.run/public/'.$g, public_path('images/'.$id.'.png'));
-        $email = strtolower($name).fake()->numerify('###').'@gmail.com';
+        $email = strtolower($name).fake()->numerify('###').'@email.com';
 
         return [
             'document'          => $id,
-            'fullName'          => $name . " " . fake()->lastName(),
+            'fullname'          => $name . " " . fake()->lastName(),
             'gender'            => $gender,
-            'birthDate'         => fake()->dateTimeBetween('1977-01-01', '2007-12-31')->format('Y-m-d'),
+            'birthdate'         => fake()->dateTimeBetween('1977-01-01', '2007-12-31'),
             'photo'             => $id.'.png',
             'email'             => $email,
-            'phone'             => fake()->phoneNumber(),
+            'phone'             => fake()->numerify('320#######'),
             'email_verified_at' => now(),
-            'password'          => static::$password ??= Hash::make('password'),
+            'password'          => static::$password ??= Hash::make('12345'),
             'remember_token'    => Str::random(10),
         ];
     }

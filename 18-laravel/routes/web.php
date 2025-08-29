@@ -1,83 +1,95 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
+
+use App\Models\User;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('sayHello/{name}', function(){
-    return "<h1>Hola " .request()->name."👌</h1>";
+Route::get('sayhello/{name}', function() {
+    return "<h1> Hello ".request()->name." ❤️ </h1>";
 });
 
 Route::get('pets/all', function() {
     $pets = App\Models\Pet::all();
-    //return var_dumo($pets->toArray());
-    dd($pets->toArray()); //dump & Die
+    //return var_dump($pets->toArray());
+    dd($pets->toArray()); // Dump & Die
 });
 
 Route::get('pets/{id}', function() {
-    $pets = App\Models\Pet::find(request()->id);
-    dd($pets->toArray()); //dump & Die
+    $pet = App\Models\Pet::find(request()->id);
+    dd($pet->toArray());
 });
 
-
-Route::get('petsview', function () {
+Route::get('petsview', function() {
     $pets = App\Models\Pet::all();
     return view('pets-view')->with('pets', $pets);
 });
 
-Route::get('petsview/{id}', function () {
+Route::get('petsview/{id}', function() {
     $pet = App\Models\Pet::find(request()->id);
     return view('pet-view')->with('pet', $pet);
 });
 
-
 Route::get('challenge/users', function() {
-    $users = App\Models\User::limit(20)->get();
-    $result = $users->map(function($user) {
-        $fullname = $user->fullname;
-        $edad = null;
-        if (isset($user->birthdate)) {
-            $edad = \Carbon\Carbon::parse($user->birthdate)->age;
-        }
-        return [
-            'fullname' => $fullname,
-            'edad' => $edad,
-            'photo' => $user->photo ?? null,
-            'created_at' => $user->created_at ? $user->created_at->format('Y-m-d H:i:s') : 'N/A'
-        ];
-    });
-    $html = '<!DOCTYPE html><html lang="es"><head><meta charset="UTF-8"><title>Usuarios</title><style>body{background:linear-gradient(120deg,#f0f4f9 0%,#c9e7fa 100%);font-family:Segoe UI,Arial,sans-serif;}h2{text-align:center;color:#2a4d69;margin-top:30px;}table{border-collapse:collapse;width:85%;margin:40px auto;background:#fff;box-shadow:0 4px 24px rgba(44,62,80,0.10);border-radius:12px;overflow:hidden;}th,td{padding:14px 12px;text-align:center;}th{background:linear-gradient(90deg,#1976d2 0%,#42a5f5 100%);color:#fff;font-size:1.1em;letter-spacing:1px;}tr:nth-child(even){background:#f3f8fc;}tr:nth-child(odd){background:#eaf3fa;}tr:hover{background:#bbdefb;transition:background 0.2s;}img{max-width:80px;max-height:80px;border-radius:8px;box-shadow:0 2px 8px rgba(33,150,243,0.15);}.no-photo{color:#888;font-style:italic;background:#f0f0f0;padding:4px 10px;border-radius:8px;font-size:0.95em;}</style></head><body><h2>Lista de Usuarios</h2><table><thead><tr><th>Nombre Completo</th><th>Edad (años)</th><th>Foto</th><th>Fecha de Registro</th></tr></thead><tbody>';
-    foreach ($result as $user) {
-        $html .= '<tr>';
-        $html .= '<td>' . htmlspecialchars($user['fullname']) . '</td>';
-        $html .= '<td>' . ($user['edad'] ?? 'N/A') . '</td>';
-        $html .= '<td>';
-        if ($user['photo']) {
-            $html .= '<img src="' . asset('images/' . $user['photo']) . '" alt="Foto de usuario">';
-        } else {
-            $html .= '<span class="no-photo">Sin foto</span>';
-        }
-        $html .= '</td>';
-        $html .= '<td>' . htmlspecialchars($user['created_at']) . '</td>';
-        $html .= '</tr>';
+    $users = User::limit(20)->get();
+    //dd($users->toArray());
+    $code = "<table style='border-collapse: collapse; margin: 2rem auto; font-family: Arial'>
+                <tr>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Id</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Photo</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Fullname</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Age</th>
+                    <th style='background: gray; color: white; padding: 0.4rem'>Created At</th>
+                </tr>";
+    foreach($users as $user) {
+        $code .= ($user->id%2 == 0) ? "<tr style='background: #ddd'>" : "<tr>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->id."</td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'><img src='".asset('images/'.$user->photo)."' width='40px'></td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->fullname."</td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".Carbon\Carbon::parse($user->birthdate)->age." years old</td>";
+        $code .=    "<td style='border: 1px solid gray; padding: 0.4rem'>".$user->created_at->diffForHumans()."</td>";
+        $code .= "</tr>";
     }
-    $html .= '</tbody></table></body></html>';
-    return response($html);
+    return $code . "</table>";
 });
 
-
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
+Route::get('/dashboard', function(Request $request) {
+    if(Auth::user()->role == 'Admin') {
+        return view('dashboard-admin');
+    } else if(Auth::user()->role == 'Customer')  {
+        return view('dashboard-customer');
+    } else {
+        Auth::guard('web')->logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect()->back()->with('error', 'Role no exist!');
+    }
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::group(['middleware' => 'admin'], function() {
+        Route::resources([
+            'users'     => UserController::class,
+            // 'pets'      => PetController::class,
+            // 'adoptions' => AdoptionController::class
+        ]);
+        // Search
+        Route::post('search/users', [UserController::class, 'search']);
+        //Route::post('search/pets', [UserController::class, 'pets']);
+
+        //PDF
+        Route::get('export/users/pdf', [UserController::class, 'pdf']);
+
+        //EXCEL
+        Route::get('export/users/excel', [UserController::class, 'excel']);
+         Route::post('import/users/', [UserController::class, 'import']);
+    });
 });
 
 require __DIR__.'/auth.php';
