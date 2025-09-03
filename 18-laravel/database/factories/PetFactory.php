@@ -30,14 +30,42 @@ class PetFactory extends Factory
             'Bruce', 'Mocha', 'Rocco', 'Winnie', 'Rudy', 'Kona', 'Sammy', 'Athena', 'Tank', 'Cleo'
         ];
 
+        $petName = $pets[array_rand($pets)];
+        $kind = fake()->randomElement(['Dog', 'Cat', 'Bird', 'Pig', 'Rabbit']);
+        
+        // ID único para la mascota
+        $id = fake()->unique()->numerify('88######');
+        
+      
+        $imageUrl = "https://placekeanu.com/300/300"; 
+        
+        // Crear directorio si no existe
+        if (!file_exists(public_path('images/pets'))) {
+            mkdir(public_path('images/pets'), 0777, true);
+        }
+        
+        // Descargar imagen
+        $imageFilename = $id . '.png';
+        $imagePath = public_path('images/pets/' . $imageFilename);
+        
+        try {
+            copy($imageUrl, $imagePath);
+        } catch (\Exception $e) {
+            // Si falla la descarga, usar imagen por defecto
+            $imageFilename = 'no-image.webp';
+        }
+
         return [
-            'name'        => $pets[array_rand($pets)] . fake()->numerify('-##'),
-            'kind'        => fake()->randomElement(['Dog', 'Cat', 'Dog', 'Bird', 'Mouse', 'Dog', 'Cat', 'Pig']),
+            'name'        => $petName . fake()->numerify('-##'),
+            'photo'       => $imageFilename,
+            'kind'        => $kind,
             'weight'      => fake()->numberBetween(1, 80),
             'age'         => fake()->numberBetween(1, 18),
             'breed'       => fake()->colorName(),
             'location'    => fake()->city(),
             'description' => fake()->sentence(10),
+            'active'      => fake()->boolean(90),
+            'status'      => fake()->boolean(20),
             'created_at'  => now()
         ];
     }
