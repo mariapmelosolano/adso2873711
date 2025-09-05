@@ -2,7 +2,7 @@
 @section('title', 'Login')
 @section('content')
     @include('layouts.navbar')
-    <main class="bg-[url(images/bg-welcome.webp)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    <main class="bg-[url(images/fondoPetsApp.png)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] w-96 text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-4xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12">
@@ -34,7 +34,7 @@
                  </div>
                  <div>
                      <label class="mt-4">Password:</label>
-                     <input type="password" name="password" placeholder="secret" class="input bg-[transparent] border-white" />
+                     <input type="password" name="password" placeholder="admin" class="input bg-[transparent] border-white" />
                  </div>
                  <div>
                     <button class="btn btn-light w-full">
@@ -54,4 +54,3 @@
         </div>
     </main>
 @endsection
-

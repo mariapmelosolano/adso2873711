@@ -63,7 +63,7 @@
                 </div>
                 <div>
                     <label class="mt-4" for="">Gender:</label>
-                    <select name="gender" class="w-full select bg-[#transparent] border-white">
+                    <select name="gender" class="w-full select bg-[#154869] border-white">
                         <option value="">Select Gender...</option>
                         <option value="Female" @if (old('gender', $user->gender) == 'Female' ) selected @endif>Female</option>
                         <option value="Male" @if (old('gender', $user->gender) == 'Male' ) selected @endif>Male</option>
@@ -83,7 +83,7 @@
                 </div>
                 <div>
                     <label class="mt-4" for="">Active:</label>
-                    <select name="active" class="w-full select bg-[transparent] border-white">
+                    <select name="active" class="w-full select bg-[#154869] border-white">
                         <option value="">Select Status...</option>
                         <option value="0" @if (old('active', $user->active) == 0 ) selected @endif>Inactive</option>
                         <option value="1" @if (old('active', $user->active) == 1 ) selected @endif>Active</option>

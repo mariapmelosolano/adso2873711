@@ -1,5 +1,5 @@
 {{-- <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600">
+    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
         {{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
     </div>
 
@@ -23,11 +23,14 @@
         </div>
     </form>
 </x-guest-layout> --}}
-@extends('layouts.app')
+
+@extends('layouts.app')   {{-- layouts nombre de carpeta y luego llama al app.blade.php --}}
 @section('title', 'Forgot Password')
 @section('content')
-    @include('layouts.navbar')
-    <main class="bg-[url(images/bg-welcome.webp)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    @include('layouts.navbar') {{-- Incluye el navbar de la carpeta layouts --}}
+
+    {{-- Contenido principal --}}
+    <main class="bg-[url(images/fondoPetsApp.png)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] w-[380px] text-white p-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-3xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12">
@@ -45,26 +48,26 @@
                 </div>
             @endif
             <form method="POST" action="{{ route('password.email') }}" class="flex flex-col gap-6">
-                 @csrf
-                 <p class="mt-6">
+                @csrf
+                <p class="mt-6">
                     Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.
-                 </p>
-                 <div class="mt-4">
-                     <label class="mt-4">Email:</label>
-                     <input type="text" name="email" placeholder="jonhw@mail.com" class="input bg-[transparent] border-white w-full"/>
-                 </div>
-                 <div>
+                </p>
+                <div class="mt-4">
+                    <label class="mt-4" for="">Email:</label>
+                    <input type="text" name="email" placeholder="jonhw@gmail.com" class="input bg-[transparent] border-white w-full" />
+                </div>
+                
+                <div>
                     <button class="btn btn-light w-full">
                         Email Password Reset Link
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                         </svg>
                     </button>
-                 </div>
+                </div>
             </form>
-
         </div>
     </main>
-@endsection
 
+@endsection
 

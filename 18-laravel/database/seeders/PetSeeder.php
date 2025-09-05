@@ -14,44 +14,43 @@ class PetSeeder extends Seeder
     public function run(): void
     {
         $pet = new Pet;
-        $pet->name     = 'Firulais';
+        $pet->name     = 'Stuart';
+        $pet->kind     = 'Dog';
+        $pet->weight   = 2.5;
+        $pet->age      = 8;
+        $pet->breed    = 'Pincher';
+        $pet->location = 'Manizales, Colombia';
+        $pet->description = 'Its a good boy';
+        $pet->save();
+
+        $pet = new Pet;
+        $pet->name     = 'Killer';
         $pet->kind     = 'Dog';
         $pet->weight   = 8.5;
         $pet->age      = 3;
-        $pet->breed    = 'Shiba Inu';
-        $pet->location = 'Tokyo';
-        $pet->description = 'Very charming dog.';
+        $pet->breed    = 'Germany Shepherd';
+        $pet->location = 'Berlin, Germany';
+        $pet->description = 'Its a good boy';
         $pet->save();
 
         $pet = new Pet;
-        $pet->name        = 'Killer';
-        $pet->kind        = 'Dog';
-        $pet->weight      = 5;
-        $pet->age         = 4;
-        $pet->breed       = 'German Shepherd';
-        $pet->location    = 'Berlin';
-        $pet->description = 'Its a good boy.';
+        $pet->name     = 'Michi';
+        $pet->kind     = 'Cat';
+        $pet->weight   = 1.5;
+        $pet->age      = 7;
+        $pet->breed    = 'Persa';
+        $pet->location = 'Abu, Dhuabi';
+        $pet->description = 'Only chickend food.';
         $pet->save();
 
         $pet = new Pet;
-        $pet->name       = 'Michi';
-        $pet->kind        = 'Cat';
-        $pet->weight      = 1.5;
-        $pet->age         = 7;
-        $pet->breed       = 'Persa';
-        $pet->location    = 'Abu Dhabi';
-        $pet->description = 'Only chicken food.';
+        $pet->name     = 'Chanchi';
+        $pet->kind     = 'Pig';
+        $pet->weight   = 15.8;
+        $pet->age      = 5;
+        $pet->breed    = 'Mini';
+        $pet->location = 'Tokio, Japan';
+        $pet->description = 'All Kind of food.';
         $pet->save();
-
-        $pet = new Pet;
-        $pet->name        = 'Chanchi';
-        $pet->kind        = 'Pig';
-        $pet->weight      = 15.8;
-        $pet->age         = 2;
-        $pet->breed       = 'Mini';
-        $pet->location    = 'New York';
-        $pet->description = 'All kind of food.';
-        $pet->save();
-
     }
 }

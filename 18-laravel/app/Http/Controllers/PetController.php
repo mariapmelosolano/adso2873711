@@ -5,9 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Pet;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+
 use Maatwebsite\Excel\Facades\Excel;
 use App\Exports\PetsExport;
-use App\Imports\PetsImport;
+use App\Imports\PetImport;
 
 class PetController extends Controller
 {
@@ -35,36 +36,37 @@ class PetController extends Controller
     {
         $validation = $request->validate([
             'name' => ['required', 'string'],
+            'photo' => ['required', 'image'],
             'kind' => ['required'],
             'weight' => ['required', 'numeric'],
             'age' => ['required', 'numeric'],
             'breed' => ['required', 'string'],
             'location' => ['required', 'string'],
-            'description' => ['required', 'string'],
-            'photo' => ['required', 'image'],
+            'description' => ['nullable', 'string'],
         ]);
-        
-        if ($validation) {
-            if ($request->hasFile('photo')) {
+
+        if($validation) {
+            if($request->hasFile('photo')) {
                 $photo = time().'.'.$request->photo->extension();
                 $request->photo->move(public_path('images/pets'), $photo);
             }
             
-            $pet = new Pet;
-            $pet->name = $request->name;
-            $pet->kind = $request->kind;
-            $pet->weight = $request->weight;
-            $pet->age = $request->age;
-            $pet->breed = $request->breed;
-            $pet->location = $request->location;
+            $pet = new Pet();
+            $pet->name        = $request->name;
+            $pet->photo       = $photo;
+            $pet->kind        = $request->kind;
+            $pet->weight      = $request->weight;
+            $pet->age         = $request->age;
+            $pet->breed       = $request->breed;
+            $pet->location    = $request->location;
             $pet->description = $request->description;
-            $pet->photo = $photo;
-            $pet->active = $request->active ?? 1;
-            $pet->status = $request->status ?? 'available';
-        }
+            $pet->active      = $request->active ?? 1;
+            $pet->status      = $request->status ?? 'available';
 
-        if ($pet->save()) {
-            return redirect('pets')->with('message', 'The pet: '.$pet->name.' was successfully added!');
+            if($pet->save()) {
+                return redirect('pets')
+                    ->with('message', 'The pet: '.$pet->name.' was successfully created!');
+            }
         }
     }
 
@@ -96,35 +98,35 @@ class PetController extends Controller
             'age' => ['required', 'numeric'],
             'breed' => ['required', 'string'],
             'location' => ['required', 'string'],
-            'description' => ['required', 'string'],
+            'description' => ['nullable', 'string'],
         ]);
-        
-        if ($validation) {
-            if ($request->hasFile('photo')) {
+
+        if($validation) {
+            if($request->hasFile('photo')) {
                 $photo = time().'.'.$request->photo->extension();
                 $request->photo->move(public_path('images/pets'), $photo);
-                if($request->originphoto != 'no-photo.webp') {
-                    unlink(public_path('images/pets/').$request->originphoto);
+                if($pet->photo != 'no-photo.webp') {
+                    unlink(public_path('images/pets/').$pet->photo);
                 }
             } else {
-                $photo = $request->originphoto;
+                $photo = $pet->photo;
             }
-            
+
             $pet->name = $request->name;
+            $pet->photo = $photo;
             $pet->kind = $request->kind;
             $pet->weight = $request->weight;
             $pet->age = $request->age;
             $pet->breed = $request->breed;
             $pet->location = $request->location;
             $pet->description = $request->description;
-            $pet->photo = $photo;
             $pet->active = $request->active;
             $pet->status = $request->status;
-        }
 
-        if ($pet->save()) {
-            return redirect('pets')
-                ->with('message', 'The pet: '.$pet->name.' was successfully updated!');
+            if($pet->save()) {
+                return redirect('pets')
+                    ->with('message', 'The pet: '.$pet->name.' was successfully updated!');
+            }
         }
     }
 
@@ -133,33 +135,38 @@ class PetController extends Controller
      */
     public function destroy(Pet $pet)
     {
-        if ($pet->delete()){
-            return redirect('pets')
-                ->with('message', 'The pet '.$pet->name.' was successfully deleted!');
+        if($pet->photo != 'no-photo.webp') {
+            unlink(public_path('images/pets/').$pet->photo);
         }
-        
-        return redirect('pets')
-            ->with('message', 'Error deleting the pet '.$pet->name);
+
+        if($pet->delete()) {
+            return redirect('pets')
+                ->with('message', 'The pet: '.$pet->name.' was successfully deleted!');
+        }
     }
 
-    public function search(Request $request) {
-        $pets = Pet::names($request->q)->paginate(20);
+    public function search(Request $request)
+    {
+        $pets = Pet::where('name', 'LIKE', '%'.$request->q.'%')->paginate(20);
         return view('pets.search')->with('pets', $pets);
     }
 
-    public function pdf() {
+    public function pdf()
+    {
         $pets = Pet::all();
         $pdf = PDF::loadView('pets.pdf', compact('pets'));
         return $pdf->download('allpets.pdf');
     }
-    
-    public function excel() {
-        return Excel::download(new PetsExport, 'allpets.xlsx');
-    }
-    
-    public function import(Request $request) {
-        $file = $request->file('file');
-        Excel::import(new PetsImport, $file);
-        return redirect()->back()->with('message', 'Pets imported successfully');
-    }
+
+    // public function excel()
+    // {
+    //     return Excel::download(new PetsExport, 'allpets.xlsx');
+    // }
+
+    // public function import(Request $request)
+    // {
+    //     $file = $request->file('file');
+    //     Excel::import(new PetImport, $file);
+    //     return redirect()->back()->with('message', 'Pets imported successfully');
+    // }
 }

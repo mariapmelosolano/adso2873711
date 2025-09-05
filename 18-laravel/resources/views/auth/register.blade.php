@@ -1,8 +1,10 @@
-@extends('layouts.app')
+@extends('layouts.app')   {{-- layouts nombre de carpeta y luego llama al app.blade.php --}}
 @section('title', 'Register')
 @section('content')
-    @include('layouts.navbar')
-    <main class="bg-[url(images/bg-welcome.webp)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
+    @include('layouts.navbar') {{-- Incluye el navbar de la carpeta layouts --}}
+
+    {{-- Contenido principal --}}
+    <main class="bg-[url(images/fondoPetsApp.png)] bg-cover w-full min-h-[100dvh] flex flex-col justify-center items-center">
         <div class="bg-[#0006] w-96 text-white p-10 mt-20 mb-10 rounded-lg flex flex-col justify-center items-center">
             <h1 class="text-4xl flex gap-2 items-center pb-2 border-b-2">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-12">
@@ -20,63 +22,58 @@
                 </div>
             @endif
             <form method="POST" action="{{ route('register') }}" class="flex flex-col gap-6">
-                 @csrf
-                 {{-- 
-        
-                'gender',
-               
-                 --}}
+                @csrf
                 <div class="mt-4">
-                     <label class="mt-4">Document:</label>
-                     <input type="text" name="document" placeholder="750001002" class="input bg-[transparent] border-white" value="{{ old('document') }}"/>
-                 </div>
-                 <div>
-                     <label class="mt-4">Full Name:</label>
-                     <input type="text" name="fullname" placeholder="John Wick" class="input bg-[transparent] border-white" value="{{ old('fullname') }}"/>
-                 </div>
-                 <div>
-                     <label class="mt-4">Gender:</label>
-                     <select name="gender" class="select bg-[transparent] border-white">
+                    <label class="mt-4" for="">Document:</label>
+                    <input type="text" name="document" placeholder="75678000" class="input bg-[transparent] border-white" value="{{ old('document') }}" />
+                </div>
+                <div>
+                    <label class="mt-4" for="">Full Name:</label>
+                    <input type="text" name="fullname" placeholder="Jhon Wick" class="input bg-[transparent] border-white" value="{{ old('fullname') }}"/>
+                </div>
+                <div>
+                    <label class="mt-4" for="">Gender:</label>
+                    <select name="gender" class="select bg-[transparent] border-white">
                         <option value="">Select Gender...</option>
-                        <option value="Female" @if(old('gender') == 'Female') selected @endif>Female</option>
-                        <option value="Male" @if(old('gender') == 'Male') selected @endif>Male</option>
-                     </select>
-                 </div>
-                 <div>
-                     <label class="mt-4">Birthdate:</label>
-                     <input type="date" name="birthdate" placeholder="2000-10-08" class="input bg-[transparent] border-white" value="{{ old('birthdate') }}"/>
-                 </div>
-                 <div>
-                     <label class="mt-4">Phone Number:</label>
-                     <input type="text" name="phone" placeholder="3201231234" class="input bg-[transparent] border-white" value="{{ old('phone') }}"/>
-                 </div>
-                 <div>
-                     <label class="mt-4">Email:</label>
-                     <input type="text" name="email" placeholder="jonhw@mail.com" class="input bg-[transparent] border-white" value="{{ old('email') }}"/>
-                 </div>
-                 <div>
-                     <label class="mt-4">Password:</label>
-                     <input type="password" name="password" placeholder="secret" class="input bg-[transparent] border-white" />
-                 </div>
-                 <div>
-                     <label class="mt-4">Password Confirmation:</label>
-                     <input type="password" name="password_confirmation" placeholder="secret" class="input bg-[transparent] border-white" />
-                 </div>
-                 <div>
-                    <button class="btn btn-light w-full">
+                        <option value="Female" @if (old('gender') == 'Female' ) selected @endif>Female</option>
+                        <option value="Male" @if (old('gender') == 'Male' ) selected @endif>Male</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="mt-4" for="">Birthdate:</label>
+                    <input type="date" name="birthdate" placeholder="2000-10-08" class="input bg-[transparent] border-white" value="{{ old('birthdate') }}"/>
+                </div>
+                <div>
+                    <label class="mt-4" for="">Phone Number:</label>
+                    <input type="text" name="phone" placeholder="3147895678" class="input bg-[transparent] border-white" value="{{ old('phone') }}"/>
+                </div>
+                <div>
+                    <label class="mt-4" for="">Email:</label>
+                    <input type="text" name="email" placeholder="jonhw@gmail.com" class="input bg-[transparent] border-white" value="{{ old('email') }}"/>
+                </div>
+                <div>
+                    <label class="mt-4" for="">Password Confirmation:</label>
+                    <input type="password" name="password" placeholder="admin" class="input bg-[transparent] border-white" />  
+                </div>
+                <div>
+                    <label class="mt-4" for="">Password:</label>
+                    <input type="password" name="password_confirmation" placeholder="admin" class="input bg-[transparent] border-white"/>  
+                </div>
+                <div>
+                    <button class="btn btn-outline w-full">
                         Register
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5 21 12m0 0-7.5 7.5M21 12H3" />
                         </svg>
+
                     </button>
-                    <a class="pb-1 border-b-2 mt-6 inline-block text-sm text-gray-400 hover:text-gray-100" href="{{ route('login') }}">
+                    <a class="pb-1 border-b-2 mt-6 inline-block text-sm text-gray-200" href="{{ route('login') }}">
                         Already registered?
                     </a>
-                 </div>
+                </div>
             </form>
-
         </div>
     </main>
-@endsection
 
+@endsection
 

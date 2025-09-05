@@ -16,7 +16,7 @@
                     <figure>
                         <img
                         style="filter: brightness(60%) !important"
-                        src="{{ asset('images/bg-users.png') }}"
+                        src="{{ asset('images/bg-users.webp') }}"
                         alt="Users" />
                     </figure>
                     <div class="card-body">
@@ -35,7 +35,7 @@
                     <figure>
                         <img
                         style="filter: brightness(60%) !important"
-                        src="{{ asset('images/bg-pets.png') }}"
+                        src="{{ asset('images/bg-pets.webp') }}"
                         alt="Pets" />
                     </figure>
                     <div class="card-body">
@@ -54,7 +54,7 @@
                     <figure>
                         <img
                         style="filter: brightness(60%) !important"
-                        src="{{ asset('images/bg-adoptions.png') }}"
+                        src="{{ asset('images/bg-adoptions.webp') }}"
                         alt="Adoptions" />
                     </figure>
                     <div class="card-body">

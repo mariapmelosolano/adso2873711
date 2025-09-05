@@ -2,13 +2,14 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Notifications\Notifiable;
 
 class Pet extends Model
 {
-    use HasFactory;
-
+    use HasFactory, Notifiable;
+    
     /**
      * The attributes that are mass assignable.
      *
@@ -27,18 +28,10 @@ class Pet extends Model
         'status'
     ];
 
-    // Relationship: Pet hasOne Adoption
-    public function adoption() {
+    // Relationships: Pet hasOne Adoption
+    public function adoption()
+    {
         return $this->hasOne(Adoption::class);
     }
-
-    // Scope for search
-    public function scopeNames($query, $q) {
-        if (trim($q)) {
-            return $query->where('name', 'LIKE', "%$q%")
-                ->orWhere('breed', 'LIKE', "%$q%")
-                ->orWhere('location', 'LIKE', "%$q%");
-        }
-        return $query;
-    }
+    
 }

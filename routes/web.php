@@ -76,19 +76,20 @@ Route::middleware('auth')->group(function () {
     Route::group(['middleware' => 'admin'], function() {
         Route::resources([
             'users'     => UserController::class,
-            // 'pets'      => PetController::class,
+            //'pets'      => PetController::class,
             // 'adoptions' => AdoptionController::class
         ]);
         // Search
         Route::post('search/users', [UserController::class, 'search']);
         //Route::post('search/pets', [UserController::class, 'pets']);
 
-        //PDF
+        // PDF 
         Route::get('export/users/pdf', [UserController::class, 'pdf']);
 
-        //EXCEL
+        // Excel
         Route::get('export/users/excel', [UserController::class, 'excel']);
-         Route::post('import/users/', [UserController::class, 'import']);
+        Route::post('import/users', [UserController::class, 'import']);
+
     });
 });
 
